@@ -1,19 +1,18 @@
-﻿
-#Week 5
+﻿# Week 5 Word Scramble Game
 
  - By Cecilia Butler
- - Production URL:  (http://e28p5.prodtechhub.me "My Word Scramble Game")
+ - Production URL:  http://e28p5.prodtechhub.me
 
 
 ## Outside Resources
 
-No outside resources with the exception of help from vuejs.org and Stack Overflow
+No outside resources with the exception of assistance form sites like vuejs.org and Stack Overflow for syntax and error issues.
 
 ## Notes For Instructor
 
-This game is called Word Scrambler.  It can be launched at http://e28p5.prodtechhub.me 
+This game is called [Word Scrambler](http://e28p5.prodtechhub.me).   It can be launched at http://e28p5.prodtechhub.me 
 
-When launched, it will prompt the player for their name and click the button to begin.
+To begin, launch from [link](http://e28p5.prodtechhub.me).  It will prompt the player to input your name and click the button to begin.
 
 Next steps:
 1. A scrambled word will appear with a hint on a separate line.
