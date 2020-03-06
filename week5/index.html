@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Word Scramble Game</title>
+        <!-- Create a word scramble game Week 5 -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+        <script src="random.js" defer></script>
+
+        <style>
+            [v-cloak]{
+                display: none;
+            }
+
+            .correct {
+                background-color: green;
+            }
+            .incorrect {
+                background-color: red;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <h1>Can You Unscramble This Word?</h1><br><br>
+
+
+        <div id="game" v-cloak>
+            <h3>Welcome to the word scramble. Enter your name to get started... </h3>
+            <label>Player's Name:
+                <!-- Input tag with Vue.js directive v-model -->
+                <input type="text" v-model="playerName">
+            </label>
+            <button v-on:click="start = true">Start Game</button>
+            <br><br>
+
+            <div v-if="start">
+                <!-- Accept player name and provide greeting with a hint-->
+                <label>Hi, {{playerName}}, try to guess this word:  {{shuffle}}
+                    <p><span>Here's a hint:  {{hint}}</p>
+                    <br>
+                    <span> Enter your guess:
+                        <input type="text" v-model="guess">
+                        <button @click="checkWord()">Check Word</button>
+                    </span>
+                </label>
+            </div>
+
+            <!-- Provide a message to the player base on if answer is correct or false -->
+                        <div v-if="correct===true" v-bind:style="{color: 'white' }"> -->
+                <span class="correct">{{this.msg}}</span>
+                <button v-show="correct" @click="reset()">Play Again</button>
+            </div>
+            <div v-else-if="correct===false" v-bind:style="{color: 'white'}"> -->
+                <span class="incorrect">{{this.msg}}</span>
+            </div>
+        </div>
+    </body>
+</html>

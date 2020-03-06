@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Shopping List</title>
+        <!-- Project #1 Week 3 -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+        <script src="shopping.js" defer></script>
+
+        <style>
+            [v-cloak]{
+                display: none
+            }
+        </style>
+    </head>
+    <body>
+        <h1>SHOPPING LIST</h1>
+
+        <div id="shop" v-cloak>
+
+            <label>Item:
+                <!-- Input tag with Vue.js directive v-model -->
+                <input type="text" v-model="item">
+            </label>
+            <button v-on:click="addItem = true, shoppingList.push(item), count+=1">  Add </button>
+                        <p v-if="!addItem">  You have no items on your list </p>     <!--//text interpolation -->
+
+
+            <div v-if="addItem">
+
+                <p>Item count:  {{count}}</p>
+                <ul>
+                    <li v-for="thisItem in shoppingList"> {{thisItem}} </li>
+                </ul>
+
+            </div>
+            <div>{{shoppingList}}</div>
+        </div>
+
+    </body>
+</html>

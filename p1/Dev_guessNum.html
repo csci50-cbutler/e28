@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Guess The Number Game</title>
+    <!-- Project #1 Week 3 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+    <script src="game.js" defer></script>
+
+    <style>
+        [v-cloak] {
+            display: none
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Guess The Number</h1>
+
+
+    <div id="game" v-cloak>
+
+        <label>Please Provide Your Name
+                <!-- Input tag with Vue.js directive v-model -->
+                <input type="text" v-model="playerName">
+            </label>
+        <br>
+        <p v-if="playerName != ''">
+            Player's Name: {{playerName}}
+            <!--//text interpolation -->
+            <br>
+        </p>
+        <button v-on:click="start = true">Start Game</button>
+        <br><br>
+
+        <div v-if="start">
+            <label>Hi, {{playerName}}, enter a number from 1 to 50:
+                    <!-- Input guess for processing using directives v-model and v-on-->
+                    <input id="guess" type="text" v-model="guess">
+                </label>
+            <br>
+            <button v-on:click="guessNum.push(guess)" onclick="myGame()">Enter Guess</button>
+            <br>
+
+            <ul>
+                <li v-for="thisNumGuess in guessNum"> {{thisNumGuess}} </li>
+            </ul>
+
+
+        </div>
+        <div id="winner"></div>
+        <div id="loser"></div>
+    </div>
+
+    <script>
+        function myGame() {
+            var playerNumber = document.getElementById("guess");
+            var randomNumber = Math.floor(Math.random() * 21);
+            var counter = 0;
+
+            console.log("Random number:  ", randomNumber);
+            console.log("Number entered:  ", playerNumber);
+
+            document.getElementById("guess").innerHTML = "The number you entered was " + playerNumber;
+
+            if (randomNumber == playerNumber) {
+                document.getElementById("winner").innerHTML =
+                    "You guessed it!  The number random number is " + randomNumber;
+            } else {
+                counter++;
+                if (counter < 5) {
+                    document.getElementById("loser").innerHTML =
+                        "Sorry!  The number random number is " + randomNumber;
+                    document.getElementById("message");
+                } else {
+                    document.getElementById("loser").innerHTML =
+                        "Sorry, you've reached the max amount of tries!  The number random number is " + randomNumber;
+                }
+
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
