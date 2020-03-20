@@ -1,88 +1,126 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Project #1 -- Guess This Number</title>
+        <!--HTML for:  Guess The Number game for DGMD Vue.js Project #1 Assignment
+            By:  Cecilia Butler -- Spring 2020
+            Description: HTML and some style for the creation of a game where the player guesses a number random
+            generated.
 
-<head>
-    <meta charset="UTF-8">
-    <title>Guess The Number Game</title>
-    <!-- Project #1 Week 3 -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
-    <script src="game.js" defer></script>
+            Component created for reuse of greeting to new player.
 
-    <style>
-        [v-cloak] {
-            display: none
+            External Files and Types:
+                1) game.js: Vue.js file that provides random number, guess tracking and compare logic
+                2) game.css:  CSS stylesheet for game styling
+        -->
+
+        <!--File declaration section:
+            Files include:  Javascript frameworks, fonts, and external javascript files.
+        -->
+        <link href="https://fonts.googleapis.com/css?family=Bellota|Lobster|Monoton|Oxanium|Unica+One|Viaoda+Libre&display=swap" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+        <script src="js/game.js" defer></script>
+
+        <style>
+        [v-cloak]{
+            display: none;
         }
-    </style>
-</head>
+        </style>
 
-<body>
-    <h1>Guess The Number</h1>
+     </head>
+    <body>
+    <h1>GUESS &nbsp;&nbsp;THAT &nbsp;&nbsp;NUMBER&nbsp;!!!</h1><br><br>
+         <!--Game Start using component template:  Prompt player for name and enter to start. -->
 
+        <div class="game" id="game" v-cloak>
 
-    <div id="game" v-cloak>
+            <script type="text/x-template" id="player-greeting">
+                <div>
+                    <div>
+                        <p> <b :style="{fontSize: 24+'px'}">Hi {{this.playerName}}!</b> &nbsp;I'm ComCee. Yep! I'm the computer.<br>Welcome to my game.
+                            &nbsp;&nbsp;I'm thinking of a number from 0 to 50.  &nbsp;&nbsp;Can you guess it?
+                            &nbsp;&nbsp;You have 5 chances. &nbsp;<strong :style="{fontSize: 24+'px'}">Good Luck!!</strong>
+                        </p>
+                    </div>
+                </div>
+            </script>
 
-        <label>Please Provide Your Name
-                <!-- Input tag with Vue.js directive v-model -->
-                <input type="text" v-model="playerName">
-            </label>
-        <br>
-        <p v-if="playerName != ''">
-            Player's Name: {{playerName}}
-            <!--//text interpolation -->
-            <br>
-        </p>
-        <button v-on:click="start = true">Start Game</button>
-        <br><br>
-
-        <div v-if="start">
-            <label>Hi, {{playerName}}, enter a number from 1 to 50:
-                    <!-- Input guess for processing using directives v-model and v-on-->
-                    <input id="guess" type="text" v-model="guess">
+             <div v-if="!start">
+                <label>Enter Your Name to Start
+                    <br><input type="text" v-model.lazy="playerName"><br><br>
                 </label>
-            <br>
-            <button v-on:click="guessNum.push(guess)" onclick="myGame()">Enter Guess</button>
-            <br>
 
-            <ul>
-                <li v-for="thisNumGuess in guessNum"> {{thisNumGuess}} </li>
-            </ul>
+                <button class="player" v-on:click="start = true; round++">Start Game</button><br>
+            </div><br><br>
+                <!-- These lines remain for testing the random number code and the collection of game round data
+                    Game round information is {{roundInfo}} <br>
+                    randomnumber is {{randomNum}} <br>
+                -->
 
+            <div class="round">ROUND {{round}}</div>
+            <div class="winners">
+                <h4>WINNER'S CIRCLE</h4>
+                <div v-for="entry in roundInfo">Round {{ entry.round }} | Winner: {{ entry.winner }}</div>
+            </div>
 
+            <!--Populate player name using text interpolation -->
+            <div class="playaction" v-if="start, playerName !=''">
+                <div v-show="!isValid">
+                    <player-greeting></player-greeting>
+                </div>
+
+                <!--Prompt player for guess -->
+                <label>Player: {{playerName}}
+                    <br><input id="guess" type="text" v-model.number="guess" @focus="showErr=false; showResponse=false">
+                </label>
+
+                <!-- Button click validates the entry, increments counter, begins main game and checks to ensure
+                    player did not win or has guesses left.  If no guesses left, or player has won, the field locks -->
+                <button id="enterGuess" v-on:click="validate();count++; myGame()" @click="lock">Enter Guess</button>
+                <br><br>
+                <div id="overlay">
+                    <br><br>
+                    <span id="valid" class="validate" v-show="showErr"></span><br><br><br><br>
+                        <button v-on:click="off()">Return To Game</button>
+                </div>
+                <br><br><br>
+
+                <!-- Set counter and check guesses.  Output guesses to a list -->
+                <div class="list" v-if="count > 0 && count <= 5 && isValid">
+                    <span class="list">
+                        YOUR CURRENT GAME DETAILS: &nbsp;{{playerName}}, you have {{guessesLeft - count}} remaining.
+                    </span><br><br>
+
+                    <div class="column" v-for="(thisGuess, index, i) in guesses">
+                        <div class="card">
+                            <img v-if="thisGuess === randomNum" style="width: 100%" :src="rightImg" :alt="rightAlt"/>
+                            <img v-else style="width: 100%" :src="imgSrc" :alt="imgAlt">
+                            <div class="container">
+                                <h3><b>Guess#: &nbsp; {{count = index + 1}}</b></h3>
+                                <h4>Your guess is {{thisGuess}}</h4>
+                            </div>
+                        </div>
+                        <br><br>
+                    </div>
+
+                    <div class="response" v-if="count <=5" :class="{winner: correct, loser: lost }">
+                        <div v-if="count === 5 || correct" >
+                            <div class="message" :style="[styleObject, {color : correct? 'goldenrod' : 'red'}]" >
+                                {{msg}}
+                                <br>
+                            </div>
+                            <br><br>
+                            <div class="replayReset">
+                                <button class="replay"@click="replay">Play Again</button>
+                                <button class="reset" @click="reset">Start Over</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="winner"></div>
-        <div id="loser"></div>
-    </div>
-
-    <script>
-        function myGame() {
-            var playerNumber = document.getElementById("guess");
-            var randomNumber = Math.floor(Math.random() * 21);
-            var counter = 0;
-
-            console.log("Random number:  ", randomNumber);
-            console.log("Number entered:  ", playerNumber);
-
-            document.getElementById("guess").innerHTML = "The number you entered was " + playerNumber;
-
-            if (randomNumber == playerNumber) {
-                document.getElementById("winner").innerHTML =
-                    "You guessed it!  The number random number is " + randomNumber;
-            } else {
-                counter++;
-                if (counter < 5) {
-                    document.getElementById("loser").innerHTML =
-                        "Sorry!  The number random number is " + randomNumber;
-                    document.getElementById("message");
-                } else {
-                    document.getElementById("loser").innerHTML =
-                        "Sorry, you've reached the max amount of tries!  The number random number is " + randomNumber;
-                }
-
-            }
-        }
-    </script>
-
-
-</body>
-
+    </body>
 </html>
