@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Guess The Number Game</title>
+    <!-- Week 8;  Using a single file component to control reusable portion of code.  A build was created
+        using NPM.  
+.
+        External Files:
+            /src/script.js
+            /src/components/GameStatus.vue
+        -->
+    <script src="js/master.js" defer></script>
+
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+        
+        h1 {
+            color: maroon;
+        }
+        
+        .right {
+            background-color: green;
+            width: 20%;
+        }
+        
+        .wrong {
+            background-color: red;
+            width: 25%;
+        }
+        
+        .good {
+            background-color: gold;
+            color: maroon;
+            width: 20%;
+        }
+        
+        .bad {
+            background-color: maroon;
+            color: linen;
+            width: 25%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Can You Unscramble This Word?</h1><br><br>
+
+
+    <div id="game" v-cloak>
+        <h3>Welcome to the word scramble. Enter your name to get started... </h3>
+        <label>Player's Name:
+                <!-- Input tag with Vue.js directive v-model -->
+                <input type="text" v-model="playerName">
+            </label>
+        <button v-on:click="start = true">Start Game</button>
+        <br><br>
+
+        <!-- Game start -->
+        <div v-if="start">
+            <!-- Accept player name and provide greeting with a hint-->
+            <label>Hi, {{playerName}}, try to guess this word:  {{shuffle}}
+                    <p>Here's a hint:  {{hint}}</p>
+                    <br>
+                    <span> Enter your guess:
+                        <input type="text" v-model="guess">
+                        <button @click="checkWord()">Check Word</button>
+                    </span>
+                </label>
+        </div>
+        <!-- Use of component to detect class and adjust output and style based upon answer -->
+        <div v-if="answer" v-bind:class="{good: correct, bad: !correct}">
+            <game-status :correct="correct" v-on:game-status='reset($event)'></game-status>
+        </div>
+    </div>
+</body>
+
+</html>
