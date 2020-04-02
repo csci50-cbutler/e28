@@ -20,7 +20,7 @@ WebGL (Web Graphics Library) is a cross-platform web standard that enables brows
 
 WebGL libraries and APIs also take care of positioning which helps the object positioning as that object moves about the simulated environment.  There is support for "texture".  This manages the imagery and objects within an environment.  WebGL 1.0 and 2.0 is supported by most major browsers including stable releases of Apple Safari, Opera, Google Chrome, Firefox, Internet Explorer, 
 
-- Placeholder for teleporting & controller support.  Note id arrow or key assignments to control movement is supported. 
+- Placeholder for teleporting & controller support.  Note if arrow or keyboard mapping or assignment is supported to control movement. 
 
 ### ***WebGL Examples***
  - How-to style segment showing code snippet &/or link to an example if available.
