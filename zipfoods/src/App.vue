@@ -4,14 +4,8 @@
 
     <nav>
       <ul>
-          <li>
-              <a href='#' @click='page = "home"'>Home</a>
-          </li>
-          <li>
-              <a href='#' @click='page = "products"'>Products</a>
-          </li>
-          <li>
-              <a href='#' @click='page = "categories"'>Categories</a>
+          <li v-for="link in links" :key="link">
+              <router-link :to="{name: link}" exact>{{link}}</router-link>
           </li>
       </ul>
     </nav>
@@ -28,9 +22,10 @@ export default {
   data: function(){
         return{
         products: products,
-      }
-  }
-}
+        links: ["home", "products", "categories"],
+      };
+    }
+};
 </script>
 
 <style lang="scss">
