@@ -25,7 +25,9 @@ This project coincides with a real world project.  My employer standardizes on s
 	- [Colorlib](https://colorlib.com/wp/vuejs-templates/)
 
 2. Images: 
-	- TBD
+	- Google Images
+	- Icon Finder
+	- Freepik
 3. Development & Troubleshooting: 
 	- Vuejs.org
 	- [Stackoverflow](https://stackoverflow.com/)
