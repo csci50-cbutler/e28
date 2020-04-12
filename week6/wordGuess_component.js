@@ -93,7 +93,7 @@ let app = new Vue({
             this.guess = "";
             this.correct = null;
             this.answer = null;
-            shuffle;
+            this.shuffle;
         }
     },
 
