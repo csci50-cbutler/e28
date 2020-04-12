@@ -1,28 +1,33 @@
 <template>
-  <div id="app">
+  <div id='app'>
     <img alt="ZipFoods" id="logo" src="./assets/images/zipfoods-logo.png" />
-    <p>ZipFoods is your one-stop shop for convenient, online grocery shopping 
-      in the greater Boston area.</p>
 
-    <show-featured :products='products' :category="'snacks'"></show-featured>
-    <show-products :products='products'></show-products>
+    <nav>
+      <ul>
+          <li>
+              <a href='#' @click='page = "home"'>Home</a>
+          </li>
+          <li>
+              <a href='#' @click='page = "products"'>Products</a>
+          </li>
+          <li>
+              <a href='#' @click='page = "categories"'>Categories</a>
+          </li>
+      </ul>
+    </nav>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import ShowProducts from "./components/ShowProducts.vue";
-import ShowFeatured from "./components/ShowFeatured.vue";
 import { products } from "./products.js";
 
 export default {
   name: "App",
-  components: {
-    "show-products": ShowProducts,
-    "show-featured": ShowFeatured,
-  },
+  components: {},
   data: function(){
         return{
-        products: products
+        products: products,
       }
   }
 }
