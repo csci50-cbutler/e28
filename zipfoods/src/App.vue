@@ -1,6 +1,6 @@
 <template>
   <div id='app'>
-    <img alt="ZipFoods" id="logo" src="./assets/images/zipfoods-logo.png" />
+    <img alt="ZipFoods" id="logo" src="@/assets/images/zipfoods-logo.png" />
 
     <nav>
       <ul>
@@ -29,5 +29,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "./assets/scss/zipfoods.scss";
+  @import "@/assets/scss/zipfoods.scss";
 </style>
