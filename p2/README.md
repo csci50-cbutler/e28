@@ -1,4 +1,4 @@
-# Project 2:  Single Page Application with Vue-router and Single File Components
+# Project 2 Version 2 due to issues:  Single Page Application with Vue-router and Single File Components
 # By: Cecilia Butler
 
 ## Production URL: http://e28p2.prodtechub.me
@@ -6,11 +6,10 @@
 ## Pages Summary
 
  1. Home Page:  The home page for the contact center shared by all contact center employees.
- 2. Managers Dashboard:   Initial login dashboard with a contact center manager dashboard setup
- 3. Contact Center Dashboard:  Web page that illustrates call queues and view of the current shift contact center reps queue information.
- 4. Reports:  Webpage that provides access to reports and options for a realtime dashboard for KPIs and realtime metrics
- 5. Workforce Management (WFM) page that provides access to managing the contact center personnel shift coverage.
-
+ 2. Managers Hub:   Initial login dashboard with a contact center manager dashboard setup
+ 3. Dashboard:  Web page that illustrates call queues and view of the current shift contact center reps queue information.
+ 4. Administration:  Webpage that provides access to reports and options for a realtime dashboard for KPIs and realtime metrics
+ 
 ## SFC Summary
 List the SFCs of your application
 

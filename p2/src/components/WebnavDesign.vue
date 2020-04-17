@@ -18,9 +18,9 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li class="active" @click='navpage = "Home"'><a href="#">Home</a></li>
-                    <li><a href="#" @click='navpage = "Manager Hub"'>Contact Center Manager Hub</a></li>
-                    <li><a href="#" @click='navpage = "Personalization"'>Personalization</a></li>
-                    <li><a href="#" @click='navpage = "Setting"'>Settings</a></li>
+                    <li><a href="#" @click='navpage = "Manager Hub"'>Manager Hub</a></li>
+                    <li><a href="#" @click='navpage = "Dashboard"'>Dashboard</a></li>
+                    <li><a href="#" @click='navpage = "Administration"'>Administration</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp; Abel Manager</a></li>
@@ -28,18 +28,10 @@
                 </div>
             </div>
         </nav>
-
-    <manager-hub v-if="navpage == 'Manager Hub'"></manager-hub>
-    <personalize-page v-else-if="navpage == 'Personalization'"></personalize-page>
-    <home-page v-else></home-page>
     </div>
 </template>
 
 <script>
-import HomePage from './HomePage.vue';
-import ManagerHub from './MgrHub.vue';
-import PersonalizePage from './PersonalizePage.vue';
-
 export default {
     name: "WebnavDesign",
     props: {
@@ -55,11 +47,7 @@ export default {
             navpage: null,
         };
     },
-    components: {
-        "home-page": HomePage,
-        "manager-hub": ManagerHub,
-        "personalize-page": PersonalizePage,
-    },
+    components: {},
 }
 </script>
 
@@ -67,7 +55,6 @@ export default {
     body {
         background-color: #FAF9F6;
     }
-
     .logo {
         position: absolute;
         top: -19px;
@@ -79,13 +66,18 @@ export default {
         color: #1D024F;
         opacity: 0.3;
     }
-
     .navbar {
       margin-bottom: 50px;
       border-radius: 0;
       background-color: #1D024F;
+      color: oldlace
     }
-     .jumbotron {
+    .active{
+        color: oldlace;
+        background-color: #C5B870;
+        font-weight: bold;
+    }
+    .jumbotron {
         margin-bottom: 0;
         background-color: #C5B870;
         text-align: center;
@@ -93,6 +85,13 @@ export default {
 
     .col-sm-8 {
         color: #1D024F;
+        font-weight: bold;
+    }
+
+    .active, .router-link-active, router-link-exact-active,
+    .router-link-active:active, .router-link-exact-active:active {
+        color: oldlace;
+        background-color: #C5B870;
         font-weight: bold;
     }
 </style>

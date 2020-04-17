@@ -1,8 +1,8 @@
 <template>
-    <div id="peronalization" @load=startClock()>
+    <div id="admin" @load=startClock()>
         <div id="clock" class="bgimg">
             <div class="topleft">
-                <h1>WE ARE WORKING ON A NEW DESIGN</h1>
+                <h1>THE NEW FUTURE OF SETTINGS FOR YOUR CONTACT CENTER APPLICATION</h1>
             </div>
             <div class="middle">
                 <h2>Reveal Day is May 31, 2021</h2>
@@ -21,7 +21,7 @@
 import Countdown from 'vuejs-countdown';
 
 export default {
-    name: "",
+    name: "AdminPage",
     components: { 
         Countdown 
     },
@@ -59,12 +59,13 @@ export default {
         width: 100%;
         height: 4.5rem;     /* Footer height */
         }
+        /*
     .bgimg {
-        background-image: linear-gradient(to bottom right, violet, grey, lavender, violet);
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         }
+        */
     .topleft {
         position: absolute;
         top: 40%;

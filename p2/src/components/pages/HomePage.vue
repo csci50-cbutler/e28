@@ -1,17 +1,17 @@
 <template>
-  <div id="app">
+  <div id="home">
 
     <div class="container-fluid text-center">
       <div class="row content">
         <div class="col-sm-2 sidenav">
-          <p><a href="#">Banff Contact Center</a>
-            <img src="./../assets/images/canada.jpg" alt="Baja Center">
+          <p><a href="#">Banff Contact Center</a><br>
+            <img src="@/assets/images/canada.jpg" alt="Baja Center">
           </p>
-          <p><a href="#">Baja Contact Center</a>
-            <img src="./../assets/images/mexico.jpg" alt="Baja Center">
+          <p><a href="#">Baja Contact Center</a><br>
+            <img src="@/assets/images/mexico.jpg" alt="Baja Center">
           </p>
           <p><a href="#">Remote Call Center Project</a>
-            <img src="./../assets/images/remote.jpg" alt="Baja Center">
+            <img src="@/assets/images/remote.jpg" alt="Baja Center">
           </p>
         </div>
         
@@ -34,13 +34,13 @@
           <div class="well">
             <p>
               <span>Candace Cleveland</span>
-              <img src="./../assets/images/csr3.jpg" alt="CSR Candace Cleveland">
+              <img src="@/assets/images/csr3.jpg" alt="CSR Candace Cleveland">
             </p>
           </div>
           <div class="well">
             <p>
               <span>Aidan Reynaldo</span>
-              <img src="./../assets/images/csr5.jpg" alt="CSR Aidan Reynaldo">
+              <img src="@/assets/images/csr5.jpg" alt="CSR Aidan Reynaldo">
             </p>
           </div>
         </div>
@@ -56,7 +56,7 @@
 <script>
 
 export default {
-  name: 'App',
+  name: "HomePage",
   components: {},
   data: function (){
     return{};
@@ -82,7 +82,7 @@ export default {
   a,
   .col-sm-8 li p {
     color: #1D024F;
-    font-size: 18px;
+    font-size: 16px;
     }
   .col-sm-8 {
     color: #1D024F;

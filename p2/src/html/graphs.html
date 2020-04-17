@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway|Lobster">
+    <script src="@/js/csr_graphs.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+        body {
+            font-family: "Raleway", sans-serif;
+            background-color: lightgrey;
+        }
+        
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: oldlace;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 18px;
+            color: darkgrey;
+            display: block;
+            transition: 0.3s;
+        }
+        
+        .sidenav a:hover {
+            color: goldenrod;
+        }
+        
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 38px;
+            margin-left: 50px;
+        }
+        
+        .sidenav p {
+            font-size: 16px;
+            margin-left: 2px;
+        }
+        
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+        
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+            .sidenav a {
+                font-size: 14px;
+            }
+        }
+        
+        .logo {
+            font-family: "Lobster";
+            font-size: 42px;
+            font-weight: bold;
+            opacity: 0.3;
+            color: midnightblue;
+        }
+        
+        .logo-small {
+            font-family: "Lobster";
+            font-size: 30px;
+            font-weight: bold;
+        }
+        
+        h1 {
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .mod i {
+            background-color: white;
+            color: indigo;
+            border-radius: 50%;
+            border: 2px solid grey;
+            padding: 10px;
+            margin-top: -45px;
+            margin-left: 20px;
+        }
+        
+        .fa-dashboard {
+            color: orange;
+            font-size: 24px;
+            padding-right: 5px;
+        }
+        
+        .reps img {
+            border-radius: 50%;
+            border: 2px solid pink;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-gap: 5px;
+            font-weight: bold;
+            padding: 10px;
+            border: 4px solid white;
+        }
+        
+        .grid-container>div {
+            background-color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 18px;
+            color: teal;
+        }
+        
+        .mapouter {
+            position: relative;
+            text-align: right;
+            height: 500px;
+            width: 600px;
+        }
+        
+        .gmap_canvas {
+            overflow: hidden;
+            background: none!important;
+            height: 500px;
+            width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Menu Icon, Navigation & Side Menu -->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+        <div class="w3-container w3-row">
+            <div class="w3-col s4">
+                <p><img src="images/csr3.jpg" class="w3-circle w3-margin-right" style="width:50px; height: 50px">Abel Manager</p>
+            </div><br>
+            <div class="w3-col s8 w3-bar"><br>
+                <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+                <a href="#" class="w3-bar-item w3-button"><i class="fa fa-comments"></i></a>
+                <a href="#" class="w3-bar-item w3-button"><i class="fa fa-line-chart"></i></a>
+                <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+            </div>
+        </div>
+        <hr>
+        <div class="w3-container">
+            <h3>Dashboard</h3>
+        </div>
+        <div class="w3-bar-block">
+            <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-large w3-dark-grey w3-hover-orange" onclick="closeNav()" title="close menu">
+                <i class="fa fa-remove fa-fw"></i>&nbsp;Close Menu</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-tachometer fa-fw"></i>&nbsp;Dashboards</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>&nbsp;Knowledge Base</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-road fa-fw"></i>&nbsp;Voice Routes</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-exchange fa-fw"></i>&nbsp;Contact Flows</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>&nbsp;Orders</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>&nbsp;News</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>&nbsp;Commercials</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-calendar fa-fw"></i>&nbsp;Schedules</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>&nbsp;Settings</a><br><br>
+        </div>
+    </div>
+    <!-- End Navigation -->
+
+    <div id="main">
+        <h1>CONTACT CENTER MANAGER DASHBOARD</h1>
+        <span style="font-size:30px;cursor:pointer; color:green" onclick="openNav()">&#9776;</span>
+
+
+        <div class="w3-main" style="margin-left:10px;margin-top:43px;">
+
+            <!-- Header -->
+            <header class="w3-container" style="padding-top:22px">
+                <h2>Contact Center Floor View</h2><br>
+            </header>
+
+            <div class="w3-row-padding w3-margin-bottom mod">
+                <div class="w3-quarter">
+                    <div class="w3-container w3-green w3-padding-16">
+                        <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
+                        <div class="w3-right">
+                            <h3>693</h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <h4>Live Chat & Chatbot</h4>
+                    </div>
+                </div>
+                <div class="w3-quarter">
+                    <div class="w3-container w3-pink w3-padding-16">
+                        <div class="w3-left"><i class="fa fa-phone w3-xxxlarge"></i></div>
+                        <div class="w3-right">
+                            <h3>599</h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <h4>Automated Calls</h4>
+                    </div>
+                </div>
+                <div class="w3-quarter">
+                    <div class="w3-container w3-teal w3-padding-16">
+                        <div class="w3-left"><i class="fa fa-headphones w3-xxxlarge"></i></div>
+                        <div class="w3-right">
+                            <h3>2335</h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <h4>Agent Calls</h4>
+                    </div>
+                </div>
+                <div class="w3-quarter">
+                    <div class="w3-container w3-orange w3-text-white w3-padding-16">
+                        <div class="w3-left"><i class="fa fa-user-md w3-xxxlarge"></i></div>
+                        <div class="w3-right">
+                            <h3>1500</h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <h4>Transfer to Specialist</h4>
+                    </div>
+                </div>
+            </div>
+
+            <br><br>
+            <div class="w3-row-padding w3-margin-bottom mod">
+                <div class="w3-quarter">
+                    <div class="w3-container w3-blue w3-padding-16">
+                        <div class="w3-left"><i class="fa fa-twitter w3-xxxlarge"></i></div>
+                        <div class="w3-right">
+                            <h3>152</h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <h4>Twitter Contacts</h4>
+                    </div>
+                </div>
+                <div class="w3-quarter">
+                    <div class="w3-container w3-cyan w3-padding-16">
+                        <div class="w3-left"><i class="fa fa-barcode w3-xxxlarge"></i></div>
+                        <div class="w3-right">
+                            <h3>3200</h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <h4>Product Requests</h4>
+                    </div>
+                </div>
+                <div class="w3-quarter">
+                    <div class="w3-container w3-red w3-padding-16">
+                        <div class="w3-left"><i class="fa fa-shopping-cart w3-xxxlarge"></i></div>
+                        <div class="w3-right">
+                            <h3>1003</h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <h4>Billing Requests</h4>
+                    </div>
+                </div>
+                <div class="w3-quarter">
+                    <div class="w3-container w3-purple w3-text-white w3-padding-16">
+                        <div class="w3-left"><i class="fa fa-id-card-o w3-xxxlarge"></i></div>
+                        <div class="w3-right">
+                            <h3>200</h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <h4>Priority/Manager Request</h4>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div id="callGraphs" class="w3-row-padding">
+                <h2>Call Monitoring</h2>
+                <table>
+                    <tr>
+                        <td>
+                            <div id="chartContainer" style="width: 470px; height: 350px; border: 3px solid grey;"></div>
+                        </td>
+                        <td>
+                            <div id="funnelChart" style="width: 470px; height: 350px;border: 3px solid navy;"></div>
+                        </td>
+                        <td>
+                            <div id="avgCallTime" style="width: 470px; height: 350px;border: 3px solid navy;"></div>
+                        </td>
+                        <td>
+                            <div id="chart_div" style="width: 400px; height: 320px; background-color: white; border-color:'blue'"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <br><br><br>
+
+
+
+            <div class="w3-panel">
+                <div class="w3-row-padding" style="margin:0 -16px">
+                    <div class="w3-third grid-container w3-cyan">
+                        <h3>Contact Details</h3>
+                        <div class="grid-item">34 Agents</div>
+                        <div class="grid-item">8 Agents Open</div>
+                        <div class="grid-item">80 Flagged Calls</div>
+                        <div class="grid-item">2+ Transfers: 200</div>
+                        <div class="grid-item">Avg Contact: 5m</div>
+                        <div class="grid-item">Avg Hold: 1m</div>
+                        <div class="grid-item">Avg Wait: 1m</div>
+                        <div class="grid-item">Specialist: 380</div>
+                        <div class="grid-item">Escalations: 93</div>
+                        <div class="grid-item">Avg Wait: 1m</div>
+                        <div class="grid-item">Accessibility: 313</div><br>
+                        <div class="grid-item">Connectivity</div><br>
+                    </div>
+
+                    <div class="w3-twothird">
+                        <h2>Current Shift:&nbsp;&nbsp Agent Performance</h2>
+                        <table class="w3-table w3-striped w3-cyan reps">
+                            <tr class="w3-text-white w3-large">
+                                <td><img src="images/csr4.jpg" alt="CSR" height="35px" width="40px" /></td>
+                                <td><a href="#" class="w3-text-white w3-large">Allaina Caldwell</a></td>
+                                <td>Average Call Time: 8 minutes &nbsp; | &nbsp; Adherence: 80%</td>
+                            </tr>
+                            <tr class="w3-text-cyan w3-large">
+                                <td><img src="images/csr5.jpg" alt="CSR" height="35px" width="40px" /></td>
+                                <td><a href="#" class="w3-text-cyan w3-large">John Biloxi</a></td>
+                                <td>Average Call Time: 3 minutes &nbsp; | &nbsp; Adherence: 80%</td>
+                            </tr>
+                            <tr class="w3-text-white w3-large">
+                                <td><img src="images/csr1.jpg" alt="CSR" height="35px" width="40px" /></td>
+                                <td><a href="#" class="w3-text-white w3-large">Ellen Green</a></td>
+                                <td>Average Call Time: 1 minutes &nbsp; | &nbsp; Adherence: 80%</td>
+                            </tr>
+                            <tr class="w3-text-cyan w3-large">
+                                <td><img src="images/csr7.jpg" alt="CSR" height="35px" width="40px" /></td>
+                                <td><a href="#" class="w3-text-cyan w3-large">Jilani Truman</a></td>
+                                <td>Average Call Time: 4 minutes &nbsp; | &nbsp; Adherence: 80%</td>
+                            </tr>
+                            <tr class="w3-text-white w3-large">
+                                <td><img src="images/csr6.jpg" alt="CSR" height="35px" width="40px" /></td>
+                                <td><a href="#" class="w3-text-white w3-large">Allaina Caldwell</a></td>
+                                <td>Average Call Time: 8 minutes &nbsp; | &nbsp; Adherence: 80%</td>
+                            </tr>
+                            <tr class="w3-text-cyan w3-large">
+                                <td><img src="images/csr2.jpg" alt="CSR" height="35px" width="40px" /></td>
+                                <td><a href="#" class="w3-text-cyan w3-large">John Biloxi</a></td>
+                                <td>Average Call Time: 3 minutes &nbsp; | &nbsp; Adherence: 90%</td>
+                            </tr>
+                            <tr class="w3-text-white w3-large">
+                                <td><img src="images/csr1.jpg" alt="CSR" height="35px" width="40px" /></td>
+                                <td><a href="#" class="w3-text-white w3-large">Kayla Green</a></td>
+                                <td>Average Call Time: 2 minutes &nbsp; | &nbsp; Adherence: 89%</td>
+                            </tr>
+                            <tr class="w3-text-cyan w3-large">
+                                <td><img src="images/csr7.jpg" alt="CSR" height="35px" width="40px" /></td>
+                                <td><a href="#" class="w3-text-cyan w3-large">Jilani Truman</a></td>
+                                <td>Average Call Time: 4 minutes &nbsp; | &nbsp; Adherence: 86% </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+
+
+        <div class="w3-container">
+            <h2>General Stats</h2>
+            <p>First Time Contact</p>
+            <div class="w3-grey">
+                <div class="w3-container w3-center w3-padding w3-green" style="width:25%">+25%</div>
+            </div>
+
+            <p>Surveys Taken</p>
+            <div class="w3-grey">
+                <div class="w3-container w3-center w3-padding w3-orange" style="width:50%">50%</div>
+            </div>
+            <p>Percent Satisfied</p>
+            <div class="w3-grey">
+                <div class="w3-container w3-center w3-padding w3-blue" style="width:50%">50%</div>
+            </div>
+
+            <p>Network Drop Rate Rate</p>
+            <div class="w3-grey">
+                <div class="w3-container w3-center w3-padding w3-red" style="width:75%">5%</div>
+            </div>
+
+            <p>Total Orders Via Agents</p>
+            <div class="w3-grey">
+                <div class="w3-container w3-center w3-padding w3-cyan" style="width:75%">$3500.00</div>
+            </div>
+
+            <p>Agent Assisted Product, Billing & Profile Requests</p>
+            <div class="w3-grey">
+                <div class="w3-container w3-center w3-padding w3-purple" style="width:75%">65%</div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="w3-container">
+            <h2>North America Geos</h2>
+            <div class="mapouter">
+                <div class="gmap_canvas">
+                    <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=north%20america&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+          </iframe>
+                    <a href="https://www.embedgooglemap.org">google. maps directions</a>
+                </div>
+            </div><br><br>
+            <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+                <tr>
+                    <td>North American Cities With Highest Call Volumes</td>
+                    <td>65%</td>
+                </tr>
+                <tr>
+                    <td>Vancouver</td>
+                    <td>15.7%</td>
+                </tr>
+                <tr>
+                    <td>Montreal</td>
+                    <td>5.6%</td>
+                </tr>
+                <tr>
+                    <td>Boston</td>
+                    <td>2.1%</td>
+                </tr>
+                <tr>
+                    <td>New Orleans</td>
+                    <td>1.9%</td>
+                </tr>
+                <tr>
+                    <td>Dallas</td>
+                    <td>1.5%</td>
+                </tr>
+            </table><br>
+            <button class="w3-button w3-dark-grey">More Locations<i class="fa fa-arrow-right"></i></button>
+        </div>
+        <hr>
+
+        <div class="w3-container w3-dark-grey w3-padding-32">
+            <div class="w3-row">
+                <div class="w3-container w3-third">
+                    <h5 class="w3-bottombar w3-border-green">Demographic</h5>
+                    <p>Language</p>
+                    <p>City</p>
+                    <p>Timezone</p>
+                </div>
+                <div class="w3-container w3-third">
+                    <h5 class="w3-bottombar w3-border-red">System Throughput</h5>
+                    <p>Connection Rate</p>
+                    <p>Data Lookup Rate</p>
+                    <p>Application Analytics</p>
+                </div>
+                <div class="w3-container w3-third">
+                    <h5 class="w3-bottombar w3-border-orange">Priority Customer Volume</h5>
+                    <p>Users</p>
+                    <p>Geo</p>
+                    <p>Interests</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="w3-container">
+            <h5>Recent Survey Ratings & Comments</h5>
+            <div class="w3-row">
+                <div class="w3-col m2 text-center">
+                    <img class="w3-circle" src="images/csr_avatar.jpg" style="width:96px;height:96px">
+                </div>
+                <div class="w3-col m10 w3-container">
+                    <h4>John <span class="w3-opacity w3-medium">Sep 29, 2014, 9:12 PM</span></h4>
+                    <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
+                </div>
+            </div>
+
+            <div class="w3-row">
+                <div class="w3-col m2 text-center">
+                    <img class="w3-circle" src="images/csr_avatar.jpg" style="width:96px;height:96px">
+                </div>
+                <div class="w3-col m10 w3-container">
+                    <h4>Bo <span class="w3-opacity w3-medium">Sep 28, 2014, 10:15 PM</span></h4>
+                    <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+        <footer class="w3-container w3-padding-16 w3-light-grey">
+            <h4>FOOTER</h4>
+            <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a> | Donut Chart Assistance from Canvas.js</p>
+        </footer>
+
+        <!-- End page content -->
+
+
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+
+        window.onload = function() {
+
+            // Incomplete Calls
+            var chart = new CanvasJS.Chart("chartContainer", {
+                theme: "light1", //"light1", "light2", "dark2"
+                title: {
+                    text: "Incompleted Calls",
+                    fontFamily: "Impact",
+                    fontWeight: "bold"
+                },
+
+                legend: {
+                    verticalAlign: "bottom",
+                    horizontalAlign: "center"
+                },
+                data: [{
+                    //startAngle: 45,
+                    indexLabelFontSize: 16,
+                    indexLabelFontFamily: "Garamond",
+                    indexLabelFontColor: "maroon",
+                    indexLabelLineColor: "darkgrey",
+                    indexLabelPlacement: "outside",
+                    type: "doughnut",
+                    showInLegend: true,
+                    dataPoints: [{
+                        y: 53.37,
+                        legendText: "On Hold > 5 minute 45%",
+                        indexLabel: "Hold > 5m 45%"
+                    }, {
+                        y: 35.0,
+                        legendText: "System Dropped 25%",
+                        indexLabel: "System 35%"
+                    }, {
+                        y: 7,
+                        legendText: "Disconnect w/Agent 7%",
+                        indexLabel: "Disconnected 7%"
+                    }, {
+                        y: 2,
+                        legendText: "Transfer Drop 2%",
+                        indexLabel: "Transfer 2%"
+                    }, {
+                        y: 5,
+                        legendText: "Unknown 5%",
+                        indexLabel: "Unknown 5%"
+                    }]
+                }]
+            });
+
+            chart.render();
+
+            // Current Calls Status
+            var chart = new CanvasJS.Chart("funnelChart", {
+                animationEnabled: true,
+                theme: "light2", //"light1", "light2", "dark2"
+                title: {
+                    text: "Call Monitor",
+                    fontFamily: "Impact",
+                    fontWeight: "bold"
+                },
+                data: [{
+                    type: "funnel",
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "ivory",
+                    toolTipContent: "<b>{label}</b>: {y} <b>({percentage}%)</b>",
+                    indexLabel: "{label} ({percentage}%)",
+                    dataPoints: [{
+                        y: 1000,
+                        label: "Active Calls"
+                    }, {
+                        y: 212,
+                        label: "On Hold"
+                    }, {
+                        y: 180,
+                        label: "2+ Transfers"
+                    }, {
+                        y: 465,
+                        label: "Specialist Request"
+                    }, {
+                        y: 178,
+                        label: "Priority Queue"
+                    }, {
+                        y: 200,
+                        label: "Unresolved"
+                    }]
+                }]
+            });
+            calculatePercentage();
+            chart.render();
+
+            function calculatePercentage() {
+                var dataPoint = chart.options.data[0].dataPoints;
+                var total = dataPoint[0].y;
+                for (var i = 0; i < dataPoint.length; i++) {
+                    if (i == 0) {
+                        chart.options.data[0].dataPoints[i].percentage = 100;
+                    } else {
+                        chart.options.data[0].dataPoints[i].percentage = ((dataPoint[i].y / total) * 100).toFixed(2);
+                    }
+                }
+            }
+
+
+            // Average Call Times Today
+            var chart = new CanvasJS.Chart("avgCallTime", {
+                theme: "light1", // "light1", "light2", "dark1", "dark2"
+                animationEnabled: true,
+                title: {
+                    text: "Average Call Times 7-day Glance"
+                },
+                axisY: {
+                    title: "Call Times in Minutes (2-hr Intervals)",
+                    interval: "mm",
+                },
+                data: [{
+                    type: "boxAndWhisker",
+                    upperBoxColor: "#FFC28D",
+                    lowerBoxColor: "#9ECCB8",
+                    color: "maroon",
+                    yValueFormatString: "00:00",
+                    toolTipContent: " {label}: Shift Start: {y[0]} , Shift End: {y[4]}",
+                    dataPoints: [{
+                        label: "Monday",
+                        y: [300, 320, 820, 650, 700]
+                    }, {
+                        label: "Tuesday",
+                        y: [831, 180, 582, 289, 381]
+                    }, {
+                        label: "Wednesday",
+                        y: [191, 143, 505, 450, 580]
+                    }, {
+                        label: "Thursday",
+                        y: [634, 353, 120, 216, 757]
+                    }, {
+                        label: "Friday",
+                        y: [275, 361, 118, 919, 714]
+                    }, {
+                        label: "Saturday",
+                        y: [134, 353, 820, 216, 357]
+                    }, {
+                        label: "Sunday",
+                        y: [295, 161, 118, 419, 714]
+                    }]
+                }]
+            });
+            chart.render();
+
+        }
+
+
+        google.charts.load('current', {
+            'packages': ['gauge']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Label', 'Value'],
+                ['Memory', 80],
+                ['CPU', 55],
+                ['Network', 68]
+            ]);
+
+            var options = {
+                width: 400,
+                height: 120,
+                redFrom: 90,
+                redTo: 100,
+                yellowFrom: 75,
+                yellowTo: 90,
+                minorTicks: 5
+            };
+
+            var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+            chart.draw(data, options);
+
+            setInterval(function() {
+                data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+                chart.draw(data, options);
+            }, 13000);
+            setInterval(function() {
+                data.setValue(1, 1, 40 + Math.round(60 * Math.random()));
+                chart.draw(data, options);
+            }, 5000);
+            setInterval(function() {
+                data.setValue(2, 1, 60 + Math.round(20 * Math.random()));
+                chart.draw(data, options);
+            }, 26000);
+        }
+    </script>
+
+</body>
+
+</html>
