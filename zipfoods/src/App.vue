@@ -14,17 +14,15 @@
 </template>
 
 <script>
-import { products } from "./products.js";
-
 export default {
-  name: "App",
+  name: 'App',
   components: {},
   data: function(){
         return{
-        products: products,
-        links: ["home", "products", "categories"],
+        links: ["home", "products", "categories", "add a product"],
       };
-    }
+    },
+    mounted:  function (){}
 };
 </script>
 

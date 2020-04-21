@@ -70,7 +70,9 @@ export default {
       margin-bottom: 50px;
       border-radius: 0;
       background-color: #1D024F;
-      color: oldlace
+      color: oldlace;
+      font-size: 18px;
+
     }
     .active{
         color: oldlace;

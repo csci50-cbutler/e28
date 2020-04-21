@@ -72,6 +72,7 @@ export default {
     margin-bottom: 50px;
     border-radius: 0;
     background-color: #1D024F;
+    font-size: 18px;
     }
   .jumbotron {
     margin-bottom: 0;

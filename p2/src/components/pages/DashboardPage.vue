@@ -138,13 +138,17 @@
   <br>
 
 <!-- Graphical Displays  & Agent Details -->
-  <div id="callGraphs" class="w3-row-padding">
+  <div id="callGraphs" class="w3-row-padding w3-flat-colors">
     <h2>Call Monitoring</h2>
-    <table>
+    <table style="overflow-x:auto; border: 2px solid pumpkin; width:100%">
       <tr>
           <td><div id="chartContainer" style="width: 470px; height: 350px; border: 3px solid grey;"></div></td>
-          <td><div id="funnelChart" style="width: 470px; height: 350px;border: 3px solid navy;"></div></td>
-          <td><div id="avgCallTime" style="width: 470px; height: 350px;border: 3px solid navy;"></div></td>
+          <td><div id="myChart" style="width: 470px; height: 350px;border: 3px solid navy;"><ejs-accumulationchart id="container">
+            <e-accumulation-series-collection>
+                <e-accumulation-series :dataSource='seriesData' type='Funnel' xName='x' yName='y'> </e-accumulation-series>
+            </e-accumulation-series-collection>
+        </ejs-accumulationchart></div></td>
+          <td><span >Incomplete Calls</span><div id="avgCallTime" style="width: 470px; height: 350px;border: 3px solid navy;"><pie-chart :donut="true"  :data="[['System Disconnect', 44], ['Caller Terminated', 183], ['Transfer Drop', 208], ['Long Wait', 209], ['2+ Transfers', 328]]"></pie-chart></div></td>
       </tr>
     </table>
   </div>
@@ -277,9 +281,15 @@
 </div>
 </template>
 <script>
+import Vue from 'vue';
+import Chartkick from 'vue-chartkick';
+import Chart from 'chart.js';
 
+Vue.use(Chartkick.use(Chart))
+ 
 export default {
     name: 'DashboardPage',
+   
       methods: { 
         openNav:  function(){
           document.getElementById("mySidenav").style.width = "250px";
@@ -289,9 +299,10 @@ export default {
         closeNav: function(){
           document.getElementById("mySidenav").style.width = "0";
           document.getElementById("main").style.marginLeft= "0";
-          }
+          },
       },
-};  
+      mounted: function() {}
+    };
 </script>
 <style scoped>
 body {

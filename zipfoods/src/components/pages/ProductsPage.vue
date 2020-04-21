@@ -7,7 +7,7 @@
 
 <script>
 import ShowProduct from "@/components/ShowProduct.vue";
-import { products } from "@/products.js";
+import * as app from '@/common/app.js'
 
 export default {
     name: '',
@@ -18,9 +18,15 @@ export default {
     
     data: function() {
         return {
-            products: products
+            products: []
         };
     },
+    mounted: function() {
+         app.api.all('products')
+            .then(response => {
+                this.products = response;
+            })
+    }
 };
 </script>
 
