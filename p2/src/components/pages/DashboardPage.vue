@@ -48,9 +48,9 @@
     <h2>Contact Center Floor View</h2><br>
   </header>
 
-  <div class="w3-row-padding w3-margin-bottom mod">
+  <div class="w3-row-padding w3-margin-bottom mod ">
     <div class="w3-quarter">
-      <div class="w3-container w3-green w3-padding-16">
+      <div class="w3-container w3-green w3-padding-16 ">
         <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
         <div class="w3-right">
           <h3>693</h3>
@@ -60,7 +60,7 @@
       </div>
     </div>
     <div class="w3-quarter">
-      <div class="w3-container w3-pink w3-padding-16">
+      <div class="w3-container w3-pink w3-padding-16 style='border: 3px solid white;'">
         <div class="w3-left"><i class="fa fa-phone w3-xxxlarge"></i></div>
         <div class="w3-right">
           <h3>599</h3>
@@ -140,15 +140,27 @@
 <!-- Graphical Displays  & Agent Details -->
   <div id="callGraphs" class="w3-row-padding w3-flat-colors">
     <h2>Call Monitoring</h2>
-    <table style="overflow-x:auto; border: 2px solid pumpkin; width:100%">
+    <table style="overflow-x:auto; border: 2px solid flat-pumpkin; width:100%">
       <tr>
-          <td><div id="chartContainer" style="width: 470px; height: 350px; border: 3px solid grey;"></div></td>
-          <td><div id="myChart" style="width: 470px; height: 350px;border: 3px solid navy;"><ejs-accumulationchart id="container">
-            <e-accumulation-series-collection>
-                <e-accumulation-series :dataSource='seriesData' type='Funnel' xName='x' yName='y'> </e-accumulation-series>
-            </e-accumulation-series-collection>
-        </ejs-accumulationchart></div></td>
-          <td><span >Incomplete Calls</span><div id="avgCallTime" style="width: 470px; height: 350px;border: 3px solid navy;"><pie-chart :donut="true"  :data="[['System Disconnect', 44], ['Caller Terminated', 183], ['Transfer Drop', 208], ['Long Wait', 209], ['2+ Transfers', 328]]"></pie-chart></div></td>
+          <td><div class="control-section">
+                <ejs-circulargauge :title='title' style='display:block; width: 470px; height: 350px; border: 3px  solid navy;' align='center' id='gauge'>
+                <e-axes>
+                <e-axis :radius='gaugeRadius' :startAngle='startAngle' :endAngle='endAngle' :majorTicks='majorTicks' :lineStyle='lineStyle' :minorTicks='minorTicks' :labelStyle='labelStyle'>
+                <e-pointers>
+                <e-pointer :value='value' :radius='pointerRadius'  :pointerWidth='pointerWidth' :cap='cap' :needleTail='needleTail'></e-pointer>
+                </e-pointers>
+                </e-axis>
+                </e-axes>
+                </ejs-circulargauge>
+                </div>
+          </td>
+          <td>
+              <div id="avgCallTime" style="width: 470px; height: 350px; border: 3px  solid navy;"><pie-chart :donut="true"  title="Incomplete Calls" :data="[['System Disconnect', 44], ['Caller Terminated', 183], ['Transfer Drop', 208], ['Long Wait', 209], ['2+ Transfers', 328]]"></pie-chart>
+              </div>
+          </td>
+          <td> 
+              <div id="chart" style="width: 490px;"><bubble-chart style="height: 350px; border: 3px solid navy"></bubble-chart>
+              </div></td>
       </tr>
     </table>
   </div>
@@ -281,29 +293,69 @@
 </div>
 </template>
 <script>
-import Vue from 'vue';
-import Chartkick from 'vue-chartkick';
-import Chart from 'chart.js';
+import Vue from 'vue'
 
-Vue.use(Chartkick.use(Chart))
- 
-export default {
-    name: 'DashboardPage',
-   
-      methods: { 
-        openNav:  function(){
-          document.getElementById("mySidenav").style.width = "250px";
-          document.getElementById("main").style.marginLeft = "250px";
-          },
+import BubbleChart from '@/components/BubbleChart'
 
-        closeNav: function(){
-          document.getElementById("mySidenav").style.width = "0";
-          document.getElementById("main").style.marginLeft= "0";
-          },
-      },
-      mounted: function() {}
-    };
+import Chartkick from 'vue-chartkick'
+import Chart from 'chart.js'
+Vue.use(Chartkick.use(Chart));
+
+import { CircularGaugePlugin } from "@syncfusion/ej2-vue-circulargauge";
+Vue.use(CircularGaugePlugin);
+
+export default Vue.extend ({
+methods: {},
+
+   data:function(){
+      return{          
+        title: "% Calls Completed",
+             titleStyle: {
+                size: '16px',
+                color: '#4B0082'
+            },
+            gaugeRadius: '80%',
+            startAngle: 230,
+            endAngle: 130,
+            majorTicks: {
+                width: 1
+            },
+            lineStyle: { width: 12 },
+            minorTicks: {
+                width: 0
+            },
+            labelStyle: {
+                font: {
+                    fontFamily: 'Roboto',
+                    size: '12px',
+                    fontWeight: 'Regular',
+                    color: 'navy'
+                },
+                offset: -5
+            },
+            value: 70,
+            pointerRadius: '70%',
+            pointerWidth: 7,
+            cap: {
+                    radius: 8,
+                    border: { width: 0 }
+            },
+            needleTail: {
+                    length: '25%'
+            } ,
+      }
+   },
+
+    components: {
+          'bubble-chart': BubbleChart
+     },
+
+
+    mounted: function() {},
+
+    });
 </script>
+
 <style scoped>
 body {
   font-family: "Raleway", sans-serif;

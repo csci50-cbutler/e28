@@ -6,14 +6,14 @@
                 <div class="panel panel-success">
                     <div class="panel-heading">Contact Center Managment</div>
                     <div class="panel-body"><img src="@/assets/images/CallCenterDashboard.jpg" class="img-responsive" alt="Contact Center Dashboard"></div>
-                    <div class="panel-footer"><a href='@/html/graphs.html'> Contact Center Applications Dashboard' </a></div>
+                    <div class="panel-footer"><a href=#> Contact Center Applications Dashboard' </a></div>
                 </div>
                 </div>
                 <div class="col-sm-4">
                 <div class="panel panel-primary">
                     <div class="panel-heading">Workforce Management</div>
                     <div class="panel-body"><img src="@/assets/images/wfm1.gif" class="img-responsive" alt="WFM"></div>
-                    <div class="panel-footer">Contact Rep Management, Scheduling, Reports</div>
+                    <div class="panel-footer">Rep Management, Scheduling, Reports</div>
                 </div>
                 </div>
                 <div class="col-sm-4">
@@ -64,7 +64,6 @@
 </template>
 
 <script>
-
 export default {
     name: "ManagerhubPage",
     components: {},
