@@ -101,8 +101,4 @@ export default {
         color: oldlace;
         font-weight: bold;
     }
-
-
 </style>
-
-

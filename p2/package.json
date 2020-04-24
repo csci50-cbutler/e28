@@ -1,5 +1,5 @@
 {
-  "name": "p2v2",
+  "name": "p2",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,10 +10,8 @@
   "dependencies": {
     "@syncfusion/ej2-vue-circulargauge": "^18.1.42",
     "axios": "^0.19.2",
-    "chart.js": "^2.9.3",
     "core-js": "^3.6.4",
     "vue": "^2.6.11",
-    "vue-chartkick": "^0.6.0",
     "vue-router": "^3.1.6",
     "vuejs-countdown": "^0.2.1"
   },

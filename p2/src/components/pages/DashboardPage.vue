@@ -280,8 +280,8 @@
         <input type="text" placeholder="Work Hours">
         <input type="text" placeholder="Supervisor">
         <button type="submit" @click="addEmp">Add Employee to Shift</button>
-        <br><br>
   </div>
+    <br><br><br>
 
   <footer class="container-fluid text-center">
       <span class="footer">Manager/Agent Interaction:  &nbsp;&nbsp;
@@ -492,7 +492,7 @@ export default Vue.extend ({
   /* Shift Table */
   #shifts table{
     border-collapse: collapse;
-    width: 65%;
+    width: 70%;
     margin-left: auto;
   }
   #shifts td, #shifts th {
