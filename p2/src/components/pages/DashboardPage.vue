@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="dashboard">
 
 <!-- Menu Icon, Navigation & Side Menu -->
 <div id="mySidenav" class="sidenav">
@@ -43,11 +43,11 @@
 
 
 <div class="w3-main" style="margin-left:10px;margin-top:43px;">
-  <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
     <h2>Contact Center Floor View</h2><br>
   </header>
 
+  <!-- Dashboard start using static data -->
   <div class="w3-row-padding w3-margin-bottom mod ">
     <div class="w3-quarter">
       <div class="w3-container w3-green w3-padding-16 ">
@@ -125,19 +125,20 @@
     </div>
     <div class="w3-quarter">
       <div class="w3-container w3-purple w3-text-white w3-padding-16">
-        <div class="w3-left"><i class="fa fa-id-card-o w3-xxxlarge"></i></div>
-        <div class="w3-right">
-          <h3>200</h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Priority/Manager Request</h4>
+          <div class="w3-left"><i class="fa fa-id-card-o w3-xxxlarge"></i></div>
+          <div class="w3-right">
+            <h3>200</h3>
+          </div>
+          <div class="w3-clear"></div>
+          <h4>Priority/Manager Request</h4>
+      </div>
       </div>
     </div>
   </div>
-  </div>
   <br>
+  <!-- Dashboard end using  static data -->
 
-<!-- Graphical Displays  & Agent Details -->
+<!-- Graphs with agent call monitoring KPIs using static data -->
   <div id="callGraphs" class="w3-row-padding w3-flat-colors">
     <h2>Call Monitoring</h2>
     <table style="overflow-x:auto; border: 2px solid flat-pumpkin; width:100%">
@@ -160,14 +161,15 @@
           </td>
           <td> 
               <div id="chart" style="width: 490px;"><bubble-chart style="height: 350px; border: 3px solid navy"></bubble-chart>
-              </div></td>
+              </div>
+          </td>
       </tr>
     </table>
   </div>
   <br><br><br>
 
 
-  <!-- Regional Connectivy & System Stats -->
+  <!-- Regional Connectivy & System Stats with static markers-->
   <h2><br>North American Contact Center Health Stats </h2>
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
@@ -222,13 +224,14 @@
             <td>2.5%</td>
           </tr>
         </table><br>
-        <button class="w3-button w3-dark-grey">More Locations &nbsp;<i class="fa fa-arrow-right"></i></button>
+        <button class="w3-button w3-dark-grey" @click='update()'>More Locations &nbsp;<i class="fa fa-arrow-right"></i></button>
         <br>
       </div>
     </div>
   </div>
   <hr>
 
+    <!-- Stats for sales, satisfaction and other KPIs with static data -->
     <div class="w3-container">
     <h2>General Stats</h2><br>
     <p>First Time Contact</p>
@@ -254,40 +257,41 @@
   </div>
   <hr>
 
-
-  <div class="w3-container">
-    <h5>Recent Survey Ratings & Comments</h5>
-    <div class="w3-row">
-      <div class="w3-col m2 text-center">
-        <img class="w3-circle" src="@/assets/images/csr_avatar.jpg" style="width:96px;height:96px">
-      </div>
-      <div class="w3-col m10 w3-container">
-        <h4>John <span class="w3-opacity w3-medium">May 3, 2020, 9:12 PM</span></h4>
-        <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
-      </div>
-    </div>
-
-    <div class="w3-row">
-      <div class="w3-col m2 text-center">
-        <img class="w3-circle" src="@/assets/images/csr_avatar.jpg" style="width:96px;height:96px">
-      </div>
-      <div class="w3-col m10 w3-container">
-        <h4>Bo <span class="w3-opacity w3-medium">May 3, 10:15 PM</span></h4>
-        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
-      </div>
-    </div>
+<!-- Call the employees API using Axio and format the shifts .  Add employees using post  shift-->
+   <div id="shifts" v-if='employees'>
+      <table style="overflow-x:auto;">
+        <tr>
+          <th>Employee Name</th>
+          <th>Shift</th>
+          <th>Hours</th>
+        </tr>
+        <tr v-for="employee in employees" v-bind:key='employee.name'>
+          <td>{{  employee.name }}</td>
+          <td>{{ employee.shift }}</td>
+          <td> {{ employee.workHours }}</td>
+          </tr>
+      </table>
   </div>
-  <br>
+  <br><br>
+  <div class="addEmp">
+        <input type="number" placeholder="Numeric ID">
+        <input type="text" placeholder="Full Name">
+        <input type="text" placeholder="Title">
+        <input type="text" placeholder="Work Hours">
+        <input type="text" placeholder="Supervisor">
+        <button type="submit" @click="addEmp">Add Employee to Shift</button>
+        <br><br>
+  </div>
 
-
-        <footer class="container-fluid text-center">
-            <span class="footer">Manager/Agent Interaction:  &nbsp;&nbsp;
-                <a href=# class="fa fa-headphones" title="Listen In" >  &nbsp;&nbsp;&nbsp;</a>
-                <a href=# class="fa fa-microphone-slash" title="Speak with Agent">  &nbsp;&nbsp;&nbsp;</a>
-                <a href=# class="fa fa-dot-circle-o" title="Record Live Agent" >  &nbsp;&nbsp;&nbsp;</a>
-                <a href=# class="fa fa-comments-o" title="Chat with Agent">  &nbsp;&nbsp;&nbsp;</a>
-            </span>
-        </footer>
+  <footer class="container-fluid text-center">
+      <span class="footer">Manager/Agent Interaction:  &nbsp;&nbsp;
+          <a href="#" class="fa fa-headphones" title="Listen In" >  &nbsp;&nbsp;&nbsp;</a>
+          <a href="#" class="fa fa-microphone-slash" title="Speak with Agent">  &nbsp;&nbsp;&nbsp;</a>
+          <a href="#" class="fa fa-dot-circle-o" title="Record Live Agent" >  &nbsp;&nbsp;&nbsp;</a>
+          <a href="#" class="fa fa-comments-o" title="Chat with Agent">  &nbsp;&nbsp;&nbsp;</a>
+          <a href="#" class="fa fa-phone-square" title="Priority Transfer">  &nbsp;&nbsp;&nbsp;</a>
+      </span>''
+  </footer>
 </div>
 <!-- End main  content -->
 </div>
@@ -295,42 +299,32 @@
 <script>
 import Vue from 'vue'
 
-import BubbleChart from '@/components/BubbleChart'
+//Backend Data Processing
+const axios = require('axios');
 
+//Chart Data
+import BubbleChart from '@/components/BubbleChart'
 import Chartkick from 'vue-chartkick'
 import Chart from 'chart.js'
 Vue.use(Chartkick.use(Chart));
-
 import { CircularGaugePlugin } from "@syncfusion/ej2-vue-circulargauge";
 Vue.use(CircularGaugePlugin);
 
 export default Vue.extend ({
-methods: {},
-
    data:function(){
-      return{          
+      return{  
+        empCount: 15,
+        // Chart  series data start 
         title: "% Calls Completed",
-             titleStyle: {
-                size: '16px',
-                color: '#4B0082'
-            },
+            titleStyle: {size: '16px', color: '#4B0082'},
             gaugeRadius: '80%',
             startAngle: 230,
             endAngle: 130,
-            majorTicks: {
-                width: 1
-            },
+            majorTicks: {width: 1},
             lineStyle: { width: 12 },
-            minorTicks: {
-                width: 0
-            },
+            minorTicks: { width: 0},
             labelStyle: {
-                font: {
-                    fontFamily: 'Roboto',
-                    size: '12px',
-                    fontWeight: 'Regular',
-                    color: 'navy'
-                },
+                font: {fontFamily: 'Roboto', size: '12px', fontWeight: 'Regular', color: 'navy'},
                 offset: -5
             },
             value: 70,
@@ -343,147 +337,195 @@ methods: {},
             needleTail: {
                     length: '25%'
             } ,
+            // Chart Description End
+
+            //Employee Data Start
+            employees: [],
       }
    },
 
-    components: {
-          'bubble-chart': BubbleChart
-     },
+      components: {
+          'bubble-chart': BubbleChart,
+      },
 
+      // Employee shift processing
+      computed: {
+       shifts: function() {
+            let emp = this.employees
+            return [emp];
+       },
+    },
+    
+    methods: {
+      addEmp: function(){
+        axios
+        .post(
+            'https://my-json-server.typicode.com/csci50-cbutler/e28-p2-api/employees/16' 
+        )
+      }
+    },
 
-    mounted: function() {},
+      mounted: function() {
+        //Using Axios to manage get and  put data
+         axios
+        .get(
+            'https://my-json-server.typicode.com/csci50-cbutler/e28-p2-api/employees' 
+        )
+        .then(response => {
+            console.log(response);
+            console.log(response.data);
+            this.employees = response.data;
+          }); 
+      },
 
     });
 </script>
 
 <style scoped>
-body {
-  font-family: "Raleway", sans-serif;
-  background-color: lightgrey;
-}
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: oldlace;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 16px;
-  color: darkgrey;
-  display: block;
-  transition: 0.3s;
-}
-.sidenav a:hover {
-  color: goldenrod;
-}
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 38px;
-  margin-left: 50px;
-}
-.sidenav p {
-  font-size: 16px;
-  margin-left: 2px;
-}
-#main {
-  transition: margin-left .5s;
-  padding: 16px;
-}
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 14px;}
-}
-
-.logo {
-  font-family:"Lobster";
-  font-size: 42px;
-  font-weight: bold;
-  opacity: 0.3;
-  color: midnightblue;
-}
-.logo-small {
-  font-family: "Lobster";
-  font-size: 30px;
-  font-weight: bold;
-}
-
-h1{
-text-align: center;
-font-weight: bold;
-}
-.mod i {
- background-color: white;
- color: indigo;
- border-radius: 50%;
- border: 2px solid grey;
- padding:10px;
- margin-top: -45px;
- margin-left: 20px;
-}
-.fa-dashboard {
-  color: orange;
-  font-size: 24px;
-  padding-right: 5px;
-}
-
-.reps img {
-  border-radius: 50%;
-  border: 2px solid pink;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 5px;
-  font-weight: bold;
-  padding: 10px;
-  border: 4px solid white;
-}
-.grid-container > div {
-  background-color: white;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 18px;
-  color: teal;
-}
-.mapouter {
-  position:relative;
-  text-align:right;
-  height:500px;
-  width:500px;
+  body {
+    font-family: "Raleway", sans-serif;
+    background-color: lightgrey;
   }
-.gmap_canvas  {
-    overflow:hidden;
-    background:none!important;
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: oldlace;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    color: darkgrey;
+    display: block;
+    transition: 0.3s;
+  }
+  .sidenav a:hover {
+    color: goldenrod;
+  }
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 38px;
+    margin-left: 50px;
+  }
+  .sidenav p {
+    font-size: 16px;
+    margin-left: 2px;
+  }
+  #main {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 14px;}
+  }
+  .logo {
+    font-family:"Lobster";
+    font-size: 42px;
+    font-weight: bold;
+    opacity: 0.3;
+    color: midnightblue;
+  }
+  .logo-small {
+    font-family: "Lobster";
+    font-size: 30px;
+    font-weight: bold;
+  }
+  h1{
+  text-align: center;
+  font-weight: bold;
+  }
+  .mod i {
+  background-color: white;
+  color: indigo;
+  border-radius: 50%;
+  border: 2px solid grey;
+  padding:10px;
+  margin-top: -45px;
+  margin-left: 20px;
+  }
+  .fa-dashboard {
+    color: orange;
+    font-size: 24px;
+    padding-right: 5px;
+  }
+  .reps img {
+    border-radius: 50%;
+    border: 2px solid pink;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 5px;
+    font-weight: bold;
+    padding: 10px;
+    border: 4px solid white;
+  }
+  .grid-container > div {
+    background-color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 18px;
+    color: teal;
+  }
+  .mapouter {
+    position:relative;
+    text-align:right;
     height:500px;
     width:500px;
+    }
+  .gmap_canvas  {
+      overflow:hidden;
+      background:none!important;
+      height:500px;
+      width:500px;
+    }
+  /* Shift Table */
+  #shifts table{
+    border-collapse: collapse;
+    width: 65%;
+    margin-left: auto;
   }
-      /* Footer styling and color */
+  #shifts td, #shifts th {
+    border: 2px solid darkorange;
+    padding: 8px;
+  }
+  #shifts tr:nth-child(even)
+    {background-color: #f2f2f2;
+    }
+  #shifts tr:hover {
+    background-color: lightgray;
+    }
+
+  #shifts th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color:  peachpuff;
+    color: white;
+  }
+  /* Footer styling and color */
     footer {
       background-color: #1D024F;
       padding: 25px;
     }
-
     footer i {
         color: #FAF9F6;
     }
-
     footer span {
         color: #FAF9F6;
         font-size:30px;
         padding-right: 3%;
     }
-
     .footer .fa {
         color: #FAF9F6;
         font-size:38px;

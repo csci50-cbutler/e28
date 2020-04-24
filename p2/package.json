@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@syncfusion/ej2-vue-circulargauge": "^18.1.42",
+    "axios": "^0.19.2",
     "chart.js": "^2.9.3",
     "core-js": "^3.6.4",
     "vue": "^2.6.11",

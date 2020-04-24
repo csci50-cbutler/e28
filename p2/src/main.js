@@ -6,6 +6,7 @@ import ManagerHub from '@/components/pages/MgrhubPage.vue';
 import DashboardPage from '@/components/pages/DashboardPage.vue';
 import AdminPage from '@/components/pages/AdminPage.vue';
 
+
 Vue.use(VueRouter);
 Vue.config.productionTip = false;
 
@@ -23,7 +24,5 @@ const router = new VueRouter({
 
 new Vue({
     router: router,
-    linkActiveClass: "currpage",
-    linkExactActiveClass: "exact-currpage",
     render: h => h(App)
 }).$mount("#app");
