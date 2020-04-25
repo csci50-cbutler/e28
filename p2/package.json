@@ -11,6 +11,7 @@
     "@syncfusion/ej2-vue-circulargauge": "^18.1.42",
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
+    "firebase": "^7.14.2",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6",
     "vuejs-countdown": "^0.2.1"

@@ -49,6 +49,7 @@ export default {
         };
     },
     components: {},
+    mounted:  function(){}
 }
 </script>
 
@@ -56,7 +57,6 @@ export default {
     body {
         background-color: #FAF9F6;
     }
-
     .logo {
         position: absolute;
         top: -19px;
@@ -68,7 +68,6 @@ export default {
         color: #1D024F;
         opacity: 0.3;
     }
-
     .navbar {
       margin-bottom: 50px;
       border-radius: 0;
@@ -80,22 +79,18 @@ export default {
         background-color: #C5B870;
         text-align: center;
     }
-
     .col-sm-8 {
         color: #1D024F;
         font-weight: bold;
     }
-
     .router-link-active:link {
         background-color: oldlace;
         color: #C5B870;
         font-weight: bold;
     }
-    
     .currpage, .exact-currpage{
         color: fuchsia;
     }
-
     .active {
         background-color: #C5B870;
         color: oldlace;
