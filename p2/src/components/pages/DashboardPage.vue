@@ -217,12 +217,18 @@
                 <div class="w3-row-padding" style="margin:0 -16px">
                     <div class="w3-third">
                         <div class="addEmp">
+                            <label for="employeeID">Employee ID</label><br>
                             <input type="text" placeholder="Id is auto-generated" v-model="empInfo.id"><br>
+                            <label for="fullname">First & Last Name</label><br>
                             <input type="text" placeholder="Full Name" v-model="empInfo.name"><br>
+                            <label for="jobtitle">Job Title</label><br>
                             <input type="text" placeholder="Title" v-model="empInfo.title"><br>
+                            <label for="shift">Shift</label><br>
                             <input type="text" placeholder="Work Shift" v-model="empInfo.shift"><br>
+                            <label for="hours">Work Hours</label><br>
                             <input type="text" placeholder="Work Hours" v-model="empInfo.hours"><br>
-                            <input type="text" placeholder="Supervisor" v-model="empInfo.supervisor"><br>
+                            <label for="supervisor">Supervisor</label><br>
+                            <input type="text" placeholder="Supervisor" v-model="empInfo.supervisor"><br><br>
                             <button class="subEmp" type="submit" @click="addEmp()">Add Employee to Shift</button>
                         </div>
                         <transition name='fade'>
@@ -367,7 +373,6 @@
                     this.added = true;
 
                     setTimeout(() => (this.added = false), 2000)
-                    this.employees =  []
                 })
 
                 //Reload table
