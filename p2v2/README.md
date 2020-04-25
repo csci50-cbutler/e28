@@ -21,7 +21,9 @@ I used vue router for page management and the main.js script provided was update
  6. App.vue:  Updated to provide menu and header that is consistent throughout the site.
  
 ## Server Interaction
-I used AXIOS to GET the employee shift data which is near the bottom of the Manager Dashboard Page
+I used [Google's Firebase](https://firebase.google.com/) for my for server interaction.  The "Dashboard" page automatically updates with the latest shift workers. This table can be found under the dasboard section Employee & Shift Details.  
+
+From that same section, a user can "add" an employee to a shift and get an updated table after clicking enter.
 
 ## Outside resources
 This project coincides with a real world project.  My employer standardizes on several frameworks and technologies.  For this project the the following outside resources were used.  
@@ -41,6 +43,13 @@ This project coincides with a real world project.  My employer standardizes on s
 	- [Stackoverflow](https://stackoverflow.com/)
 	- [Github](https://github.com/)
 	- [JSON Placeholder](https://jsonplaceholder.typicode.com/)
+	- [Google Firebase/Firestore](https://firebase.google.com/)
+	- NPM Countdown package for the "Under Construction" countdown clock on the Administration webpage.
 
 
 ## Notes for instructor
+For background information, this site and some of the design templates is work related.  The selection design of the Manager Hub and the Dashboard page is based upon UI input.  The color choices "so information jumps out aft you", is also inspired by the feedback along with some of the graphs and KPIs in the segments on the page.
+
+The Manager Hub page and the other pages have no functionality at this time. 
+
+All data other than the shift data is static.
