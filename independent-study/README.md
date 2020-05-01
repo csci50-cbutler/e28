@@ -13,7 +13,7 @@ Another reason why AR/VR is on the rise is that open source has allowed many dev
 
 Web Graphics Library, or WebGL, is a framework used as a foundation, or core, by other web-enabled AR/VR frameworks because it built on JavaScript APIs for 2D and 3D imagery.  A-Frame, which is built on frameworks that are built on WebGL and JavaScript, is another framework that simplifies the development by using what they call primitives.  These are special tags that allow for development using HTML.   
 
-Let's look at these frameworks and some core concepts required to develop an AR/VR scene.
+These frameworks support most browsers including Apple Safari, Opera, Google Chrome, Firefox, Internet Explorer.  Let's look at these frameworks and some core concepts required to develop an AR/VR scene.
 
 ## WebGL
 WebGL is a cross-platform web standard that enables browser-based AR/VR without plugins.  WebGL supports 2D/3D development by the use of shaders.  What are shaders?  I will not go into the nuts and bolts of computer-generated graphics.  This is because the beauty of these frameworks is that it allows developers to get started without fully understanding the underlying technology and terms.  However, I will try to simplify some of the terms in order to understand some of the basic components of web AR/VR development.
@@ -23,12 +23,12 @@ A simple explanation of a shader is that it is a program that tells the computer
 
 Once these multi-dimensional objects are created, movement and control is added to create movement and a way for a user to control the movement.  
 
-In the next sections, I will talk about some frameworks and provide some samples illustrating how AR/VR can be developed for browser viewing.
+In the next sections, I will explore some frameworks and provide sample code illustrating how AR/VR can be developed for browser viewing.
 
 ### WebGL and Controllers
-WebGL libraries and APIs also take care of positioning which helps the object positioning as that object moves about the simulated environment.  There is support for "texture".  This manages the imagery and objects within an environment.  WebGL 1.0 and 2.0 is supported by most major browsers including stable releases of Apple Safari, Opera, Google Chrome, Firefox, Internet Explorer.
+Once objects are created, positioning and controlling movement of the objects will need to be addressed.  WebGL libraries and APIs are used to manage positioning that enable movement in a simulated environment.  There is support for "texture" as well.  This manages the imagery and objects within an environment.  
 
-For game development, it is important to control movement.  The first releases of web-based AR and VR allowed for programming arrow keys and more to control movement.  Now, HTML5 supports external controllers with the [Gamepad](https://www.w3.org/TR/gamepad/) specification through the World Wide Web Consortium, heretofore known as W3C.   The tags `<canvas>, <audio>, and <video>` mark the location on an HTML page and the necessary JavaScript and APIs enable movement via a controller.   Mozilla Developer Network, heretofore known as MDN, provides a sample of the JavaScript to connect and disconnect a controller using the Gamepad API.  Below is the JavaScript template from [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API) for a basic connect and disconnect of a controller. 
+For movement control, many early releases of web-based AR and VR allowed for programming keyboard arrow keys to control movement.  Now, HTML5 supports external controllers with the [Gamepad](https://www.w3.org/TR/gamepad/) API.   This API uses HTML tags `<canvas>, <audio>, and <video>` to define the scene location on an HTML page and JavaScript and the Gamepad API enable movement via an external controller.   Mozilla Developer Network, heretofore known as MDN, provides a sample of the JavaScript to connect and disconnect a controller using the Gamepad API.  Below is the JavaScript template from [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API) for a basic connect and disconnect of a controller. 
 
 
 Below is the sample JavaScript to connect a controller:
