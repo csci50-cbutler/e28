@@ -52,36 +52,38 @@ function(e) {
 
 MDN also has information on how to manage multiple controllers and browser support as well.  For more information, see the [MDN Gamepad Specification](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API).
 
-My "fun find" is the [Gamepad Tester](https://html5gamepad.com/) which allows you to test your code.  
+My "fun find" is the [Gamepad Tester](https://html5gamepad.com/) which allows you to test your code with a controller.
 
-The controller interaction is very important as it can also manage movement of objects.  Let's take a look at positioning.  There are a few important terms related to positioning; they are teleporting and spatial or positional tracking.  
+Let's take a look at positioning.  The controller may direct the movement of the object, but the object will not go anywhere without programmatically managing the movement of the object.
 
 ### Positioning
-WebGL libraries and APIs also take care of positioning which helps the object positioning as that object moves about the simulated environment.  There is support for "texture".  This manages the imagery and objects within an environment.  WebGL 1.0 and 2.0 is supported by most major browsers including stable releases of Apple Safari, Opera, Google Chrome, Firefox, Internet Explorer.
+WebGL libraries and APIs also take care of positioning which creates the appearance of an object moving about the simulated environment.  There is also support for "texture" which is an array of pixels that simulate the look of an object.  For example, the management of light and pixels to look like a car in a scene.  WebGL manages the imagery, textures, and objects within an environment with JavaScript libraries.  You can customize and create your own depending upon your level of knowledge of how to create and render 2D and 3D objects.
 
 #### Teleporting
-A simple to describe teleporting, in regards to AR/VR, is moving the viewer around a scene or an object around a scene.  Developer software like Unity have robust support for teleporting allowing movement of through various scenes.   With HTML5, let JavaScript be your friend.  At the heart of teleporting in AR/VR is the ability to manage the viewer or object within a space or the physics of moving from one location to another.  MDN has an API, [XRReferenceSpace()](https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpace), which allows a developer to use the offset, or location, of an object, in a space.  It then uses a series of supported interfaces that allows a developer to program a new offset.  When the browser is launched, an object can be located in that offset or the controller can be used to move the object from one location in a scene to another.  
+A simple way to describe teleporting, in regards to AR/VR, is moving the viewer around a scene or an object around a scene.  Developer software like Unity have robust support for teleporting allowing movement of through various scenes.   At the heart of teleporting in AR/VR is the ability to manage the viewer or object within a space or the physics of moving from one location to another.  MDN has a JavaScript API, [XRReferenceSpace()](https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpace), which allows for programming movement by using the objects position offset, or location of that object in a space.  A variety of supported interfaces allows for development of new offsets.  When the browser is launched, an object is located in a starting position or offset and, through the use of a controller to provide direction, that object relocates from one offset to another simulating movement.  The premise is the same with video, however, no controller is needed to view the recorded material.
 
 #### Spatial Tracking
-MDN has a section for [spatial tracking](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/Spatial_tracking) that allows for developers to manage movement.  
+WebGL can also provide spatial tracking.  MDN has an extensive section on [spatial tracking](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/Spatial_tracking).  The libraries and APIs that allows for an immersive experience.  Spatial tracking can manage the users position to create the feeling that you are part of that environment.  This is done by setting your location and tracking your position and movements as well as the objects within that scene.  
 
 ### Positioning Summary
-In summary, WebGL has extensive positioning support that allows for a variety of motion and motion management.
+In summary, WebGL has extensive positioning support that allows for a variety of motion and motion management of objects and tracking of the users motion and positions within a scene to create an immersive experience.
 
 ###  WebGL  Samples
-My "fun find" on samples using WebGL can be found at [WebGL Samples](https://webglsamples.org/).
+My "fun find" on samples using WebGL can be found at [WebGL Samples](https://webglsamples.org/).   These samples can be viewed on most browsers.
 
  
  
 ## ***WebXR***
-[WebXR](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API) is set of standard developed by the  W3C specification and development standards are maintained by MDN.  WebXR allows for 3D rendering for virtual worlds includes an an API for headset device integration.  WebXR  is built on WebGL and supports a variety of headsets from cardboard, to Google Daydream, to Oculus Rift.  
+[WebXR](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API) is another W3C specification and MDN manages developer standards based upon the W3C specification.  WebXR allows for 3D rendering of virtual worlds and includes an API for headset device integration.  WebXR  is built on WebGL and supports a variety of headsets including cardboard, Google Daydream, and Oculus Rift.  
 
-In some cases, you may need an extension.  However, in most cases, if you have a headset and an AR/VR/XR compatible phone, the browser will become available from the home view.  You can then navigate to your web AR/VR experience and *experience it*.
+In some cases, an extension may be required.  In most cases, if you have a headset and an AR/VR/XR compatible phone, the browser option will become available from the home view.  You can then navigate to your web AR/VR experience and *experience it*.
 
-[Google Chrome](https://chrome.google.com/webstore/detail/webxr-api-emulator/mjddjgeghkdijejnciaefnkjmkafnnje/related) and [Mozilla Firefox](https://addons.mozilla.org/en-US/firefox/addon/webxr-api-emulator/) have also developed extension for headset emulators that allows you to test the headset viewpoint from your browser.  You cannot control it, it just allows the developer the ability to see what is being developed without having to use a device.  
+[Google Chrome](https://chrome.google.com/webstore/detail/webxr-api-emulator/mjddjgeghkdijejnciaefnkjmkafnnje/related) and [Mozilla Firefox](https://addons.mozilla.org/en-US/firefox/addon/webxr-api-emulator/) have WebXR simulator extensions available allowing developers the ability to simulate the viewpoint for a variety of popular headset.
 
 ## A-Frame
-There are several frameworks.  [A-Frame](https://aframe.io/docs/1.0.0/introduction/) is an AR/VR development framework that allows for development using HTML without installing anything but a script tag is needed in the head of an HTML document.  A-Frame supports more than three more than 3D scene rendering.  It framework has a powerful entity-component framework that provides a declarative, extensible, and composable structure to [three.js](https://threejs.org/).   I will not cover Three.js as it, too, is a framework built on WebGL.  A-Frame does not always require JavaScript for motion like others.  Of course, JavaScript is needed for more complicated motion and scenes.  However, to develop a simple web AR/VR experience you just need HTML.  Let's build a scene using A-Frame. 
+[A-Frame](https://aframe.io/docs/1.0.0/introduction/) is an AR/VR development framework that allows for development using HTML without installing anything.  A script tag is needed in the head of an HTML document.  A-Frame supports more than 3D scene rendering.  It uses an entity-component framework based on [three.js](https://threejs.org/) which is also built on the WebGL framework.  
+
+A-Frame does not always require JavaScript for motion like other frameworks.  Custom JavaScript can be written for more complicated motion and scenes or developing new A-Frame components.  However, to develop a simple web AR/VR experience you just need HTML.  Let's build a scene using A-Frame. 
 
     <!DOCTYPE html>
     <html>
@@ -99,10 +101,10 @@ There are several frameworks.  [A-Frame](https://aframe.io/docs/1.0.0/introducti
 		</body>
 	</html>
     
-A-Frame supports most well-known headsets including HTC Vive, Windows Mixed Reality, Google Daydream, cardboard goggles, Samsung Gear, and most Oculus brand headsets.  It also supports augmented reality.  It is not bound to basic 360° content but supports spatial or what A-Frame refers to as positional tracking that is managed by controllers.
+A-Frame supports most popular headsets including HTC Vive, Windows Mixed Reality, Google Daydream, cardboard goggles, Samsung Gear, and most Oculus brand headsets.  It is not bound to basic 360° content and supports spatial tracking.  A-Frame refers to spatial management as positional tracking,
 
 ### Positioning
-Because A-Frame does not require JavaScript, it is important to understand the concept of primitives.  A-Frame embraces the [three.js entity-component system](https://en.wikipedia.org/wiki/Entity_component_system)and uses [primitives](https://aframe.io/docs/1.0.0/introduction/html-and-primitives.html) that describe the elements of a scene like `<a-box>` or `<a-sky>`.  Within those tags are attributes that support the position of objects within those primitives.   Here is another A-Frame sample using several primitives with the A-Frame *position* attribute to control an object on a page.
+Because A-Frame does not require JavaScript, it is important to understand the concept of primitives.  A-Frame embraces the [three.js entity-component system](https://en.wikipedia.org/wiki/Entity_component_system) and uses [primitives](https://aframe.io/docs/1.0.0/introduction/html-and-primitives.html) to describe the elements of a scene like `<a-box>` or `<a-sky>`.  Within those tags are attributes that support the position of objects within those primitives.   Here is another A-Frame sample using several primitives with the A-Frame *position* attribute to control an object on a page.
 
     <html>
 	    <head>
@@ -120,11 +122,11 @@ Because A-Frame does not require JavaScript, it is important to understand the c
 	</html>
 
 
-With the use of JavaScript, developers can create their own primitives and use the A-Frame framework to build components for more complex scenes.  The A-Frame components are JavaScript based modules that can be mixed and matched and built on entities to build upon a scenes appearance, behavior, and function.
+ A-Frame components are JavaScript based modules that can be mixed and matched and built on entities to build upon a scenes appearance, behavior, and function.  Developers can customize the JavaScript or create their own primitives and components for more complex scenes. 
 
 ### Controllers
 
-For 2-D interaction, [A-Frame uses HTML browser events to interact with controllers](https://aframe.io/docs/1.0.0/introduction/interactions-and-controllers.html).   There is a little bit more to it.  They are A-Frame pre-built, custom event.  Remember A-Frame is a JavaScript based framework that takes advantage of three.js.  Well guess what three.js is built on?  WebGL.  So here's a sample of the code needed to manage controllers.
+For 2-D interaction, [A-Frame uses HTML browser events to interact with controllers](https://aframe.io/docs/1.0.0/introduction/interactions-and-controllers.html).   These are actually pre-built, custom events.  Here's a sample of the code needed to manage controllers.
 
 ``` 
 // `collide` event emitted by a component such as some collider or physics component.  
@@ -135,19 +137,19 @@ document.querySelector('a-entity').addEventListener('collide', function (evt) {
 ```
 For more information on the custom events and how they can impact a scene based upon a hover, click or more, check out the A-Frame section on [interaction and controllers.](https://aframe.io/docs/1.0.0/introduction/interactions-and-controllers.html)
 
-The above section also provides details on how to use gaze for controlling a scene when a headset does not have a physical controller, like cardboard goggles.  In addition, if the Gamepad API  is used, A-Frame has components that are compatible with controller managed headsets.  To learn more about how to get started with headset specific controllers, [start here](https://aframe.io/docs/1.0.0/introduction/interactions-and-controllers.html#vr-controllers).
+The A-Frame section on interaction and controllers also provides details on how to use gaze for controlling a scene.  Gaze is used when a headset does not have a physical controller.  For example, cardboard headsets do not use a controller.  In addition, it supports Gamepad APIs.  A-Frame has specific components for most popular headsets and external controllers that are supported by the Gamepad API.  To learn more about how to use these components, [start here](https://aframe.io/docs/1.0.0/introduction/interactions-and-controllers.html#vr-controllers).
 
 ### A-Frame Summary
-In short, A-Frame did a lot of the work for you.  It built an HTML-based framework that allows developers to create an AR/VR experience with HTML.  However, for 3D modeling, three.js scripts must be called and declared in the HTML head within ```<script>``` tags.
+In short, A-Frame did a lot of the work for you.  It allows developers to create an AR/VR experience with HTML.  However, for 3D modeling, three.js scripts must be called and declared in the HTML head within ```<script>``` tags.  In some cases, special components must also be used.
 
-My A-Frame fun find is [aframe.io](https://aframe.io/).  It allows you to view the source as well to play around and start building your own.
+My A-Frame fun find is [aframe.io](https://aframe.io/).  It allows you to view the source as well to play around and start building your own AR/VR experience.
 
 ## Additional Software & Open Source Frameworks
-May AR/VR/XR development software supports WebGL as well.  One of my favorites is [Unity](https://unity.com/).
+Many AR/VR/XR development software supports WebGL as well.  One of my favorites is [Unity](https://unity.com/).
 
-I have not had the pleasure to develop using Apple yet, but if you are a Mac user, try [ARKit.](https://developer.apple.com/documentation/arkit)  Reality Composer and RealityKit are apps for developing on the iPad.  This [link](https://developer.apple.com/videos/play/wwdc2019/603/) is a great resource to understand AR/VR development on iOS.
+If you are a Mac user, try [ARKit.](https://developer.apple.com/documentation/arkit)    Reality Composer and RealityKit are apps for developing on the iPad.  This [link](https://developer.apple.com/videos/play/wwdc2019/603/) is a great resource to understand AR/VR development on iOS.  I have not had the pleasure of developing using Apple, but I hope to soon using the Reality Composer on my iPad.
 
-I hope you take a minute to try some of the frameworks, software, and developer resources.
+I hope you take a minute to try some of the frameworks or visit the links to preview browser-enabled AR/VR.  More capabilities are being added with every release of many open source frameworks.  In addition, many AR/VR desktop software vendors are embracing WebGL as well allowing for broader cross-platform support. 
 	 
 ## Resources
 
