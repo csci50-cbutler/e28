@@ -4,16 +4,17 @@
 ## Introduction
 AR/VR has been around for a while but has grown in popularity in recent years.  One of the main reasons is that the equipment, like the headsets or goggles, allow many to experience AR/VR easily and with little expense.
 
-## Exactly What is AR & VR? 
-AR/VR is used interchangeably at times and many think it is the same.  They are not the same but they are complementary. AR creates the interactive experience by superimposing (enhancing) a real world environment over a real world object or image.  For instance.  Take an image of picture of yourself. Now create an image of a room and superimpose that over the image of yourself.     
-
-VR complements by creating a multi-dimensional recreation of a real world environment or even a completely imagined world like Hogwarts.  An object can then be placed into this virtual reality to create the AR/VR experience. 
-
 Another reason why AR/VR is on the rise is that open source has allowed many developers to create games, interactive scenes, and videos with little investment in software.  There are desktop software solutions, like Unity, that provide a free version for AR/VR development. Some of the open source frameworks that enable developers to create these experiences using web technologies are WebGL, WebXR, and A-Frame.  These frameworks use HTML and JavaScript to create browser-enabled AR/VR experiences.  
 
 Web Graphics Library, or WebGL, is a framework used as a foundation, or core, by other web-enabled AR/VR frameworks because it built on JavaScript APIs for 2D and 3D imagery.  A-Frame, which is built on frameworks that are built on WebGL and JavaScript, is another framework that simplifies the development by using what they call primitives.  These are special tags that allow for development using HTML.   
 
 These frameworks support most browsers including Apple Safari, Opera, Google Chrome, Firefox, Internet Explorer.  Let's look at these frameworks and some core concepts required to develop an AR/VR scene.
+
+## Exactly What is AR & VR? 
+AR/VR is used interchangeably at times and many think it is the same.  They are not the same but they are complementary. AR creates the interactive experience by superimposing (enhancing) a real world environment over a real world object.  For instance, take an image of picture of yourself. Now create an image of a room and superimpose that over the image of yourself.  Multi-dimensional aspects can be added to create 360-degree viewing.  In addition, virtual objects can be added to the experience.
+
+VR places an object into a virtual world.  That virtual world can be a recreation of a known place or a completely imagined world like the imaginary school of wizardry, Hogwarts.  An object can then be placed into this virtual reality to create an immersive experience and not just multi-dimensional.  For example, creating an experience where you are the object placed into Hogwarts, as you move about you feel like you are now in Hogwarts roaming around.  This is often referred to as immersive.
+
 
 ## WebGL
 WebGL is a cross-platform web standard that enables browser-based AR/VR without plugins.  WebGL supports 2D/3D development by the use of shaders.  What are shaders?  I will not go into the nuts and bolts of computer-generated graphics.  This is because the beauty of these frameworks is that it allows developers to get started without fully understanding the underlying technology and terms.  However, I will try to simplify some of the terms in order to understand some of the basic components of web AR/VR development.
