@@ -17,17 +17,21 @@ VR places an object into a virtual world.  That virtual world can be a recreatio
 
 
 ## WebGL
-WebGL is a cross-platform web standard that enables browser-based AR/VR without plugins.  WebGL supports 2D/3D development by the use of shaders.  What are shaders?  I will not go into the nuts and bolts of computer-generated graphics.  This is because the beauty of these frameworks is that it allows developers to get started without fully understanding the underlying technology and terms.  However, I will try to simplify some of the terms in order to understand some of the basic components of web AR/VR development.
+WebGL is a cross-platform web standard that enables browser-based AR/VR without plugins.  WebGL supports 2D/3D development by the use of shaders.  What are shaders?  I will not go into the nuts and bolts of computer-generated graphics because the beauty of these frameworks is that it allows developers to get started without fully understanding the underlying technology and terms.  However, I will try to simplify some of the terms in order to understand some of the basic components of web AR/VR development.
+
+WebGL allows for development of movement and control of the movement.  The movement is creating the experience of an object moving about a space or scene.  The control allows for an external device, programmed keys, gaze (via the camera) or hand gestures to control the direction of an object.  In this article, I will mostly focus on the technology that now enables external controllers.
 
 ### What is a Shader?
-A simple explanation of a shader is that it is a program that tells the computer how to render pixels to create a shading effect.  You need 2 shaders for 2D models and 3 for 3D.  This is required for development for any type of AR/VR experience.  WebGL uses JavaScript libraries for 2D and 3D graphics.   It simplifies the development of 2D and 3D models without needing to know how to develop the shaders that create the 2D and 3D effects.  
+A simple explanation of a shader is that it is a program that tells the computer how to render pixels to create a shading effect.  You need 2 shaders for 2D models and 3 for 3D.  This is required for development for any type of AR/VR experience.  WebGL uses JavaScript libraries for 2D and 3D graphics.   It simplifies the development of 2D and 3D models without needing to know how to develop the shaders that create the 2D and 3D effects.   
 
-Once these multi-dimensional objects are created, movement and control is added to create movement and a way for a user to control the movement.  
+There is support for "texture" as well.  This manages the imagery within an environment.   Texture is used to add the look and feel of a person, animal, landscape, building or any other thing, that helps create a scene.
 
-In the next sections, I will explore some frameworks and provide sample code illustrating how AR/VR can be developed for browser viewing.
+After these multi-dimensional objects are created, movement and control is added to create movement throughout a scene and a way for a user to control the movement.  
+
+In the next sections, I will explore some web-based frameworks that support development of AR/VR and provide sample code for creating a basic AR/VR scene and controlling movement.
 
 ### WebGL and Controllers
-Once objects are created, positioning and controlling movement of the objects will need to be addressed.  WebGL libraries and APIs are used to manage positioning that enable movement in a simulated environment.  There is support for "texture" as well.  This manages the imagery and objects within an environment.  
+Once objects are created, positioning and controlling movement of the objects will need to be addressed.  WebGL libraries and APIs are used to manage positioning that enable movement in a simulated environment.  
 
 For movement control, many early releases of web-based AR and VR allowed for programming keyboard arrow keys to control movement.  Now, HTML5 supports external controllers with the [Gamepad](https://www.w3.org/TR/gamepad/) API.   This API uses HTML tags `<canvas>, <audio>, and <video>` to define the scene location on an HTML page and JavaScript and the Gamepad API enable movement via an external controller.   Mozilla Developer Network, heretofore known as MDN, provides a sample of the JavaScript to connect and disconnect a controller using the Gamepad API.  Below is the JavaScript template from [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API) for a basic connect and disconnect of a controller. 
 
