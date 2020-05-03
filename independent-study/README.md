@@ -1,19 +1,19 @@
-# Developing Web-Based Augmented Reality & Virtual Reality -- AR/VR
+# Developing Web-Based Augmented Reality & Virtual Reality or AR/VR
 ## By:  Cecilia Butler
 
 ## Introduction
 AR/VR has been around for a while but has grown in popularity in recent years.  One of the main reasons is that the equipment, like the headsets or goggles, allow many to experience AR/VR easily and with little expense.
 
-Another reason why AR/VR is on the rise is that open source has allowed many developers to create games, interactive scenes, and videos with little investment in software.  There are desktop software solutions, like Unity, that provide a free version for AR/VR development. Some of the open source frameworks that enable developers to create these experiences using web technologies are WebGL, WebXR, and A-Frame.  These frameworks use HTML and JavaScript to create browser-enabled AR/VR experiences.  
+Another reason why AR/VR is on the rise is that open source has allowed many developers to create games, interactive scenes, and videos with little investment in software.  There are desktop development software engines, like Unity, that provide a free version that includes AR/VR development. Some of the open source frameworks that enable developers to create these experiences using web technologies are WebGL, WebXR, and A-Frame.  These frameworks use HTML and JavaScript to create browser-based AR/VR experiences.  
 
-Web Graphics Library, or WebGL, is a framework used as a foundation, or core, by other web-enabled AR/VR frameworks because it built on JavaScript APIs for 2D and 3D imagery.  A-Frame, which is built on frameworks that are built on WebGL and JavaScript, is another framework that simplifies the development by using what they call primitives.  These are special tags that allow for development using HTML.   
+Web Graphics Library (WebGL) is a framework used as a foundation, or core, by other web AR/VR frameworks because it is built on JavaScript and provides APIs for 2D and 3D imagery.  A-Frame is built three.js which uses WebGL as its core.  A-Frame takes simplifies AR/VR development by using something called *primitives*.  These are special tags that allow for development using HTML.  WebXR is also built on WebGL and also includes libraries and APIs and also allows for integration with external controller devices. 
 
 These frameworks support most browsers including Apple Safari, Opera, Google Chrome, Firefox, Internet Explorer.  Let's look at these frameworks and some core concepts required to develop an AR/VR scene.
 
 ## Exactly What is AR & VR? 
-AR/VR is used interchangeably at times and many think it is the same.  They are not the same but they are complementary. AR creates the interactive experience by superimposing (enhancing) a real world environment over a real world object.  For instance, take an image of picture of yourself. Now create an image of a room and superimpose that over the image of yourself.  Multi-dimensional aspects can be added to create 360-degree viewing.  In addition, virtual objects can be added to the experience.
+AR/VR is often used interchangeably and many think it is the same.  They are not the same but they are complementary. AR creates the interactive experience by superimposing (enhancing) a real world environment over a real world object.  For instance, take a picture of yourself.  Next, take an image of a real room or landscape and superimpose that over the image of yourself.  Multi-dimensional aspects can be added to create 360-degree viewing.  In addition, virtual objects can be added to the experience.
 
-VR places an object into a virtual world.  That virtual world can be a recreation of a known place or a completely imagined world like the imaginary school of wizardry, Hogwarts.  An object can then be placed into this virtual reality to create an immersive experience and not just multi-dimensional.  For example, creating an experience where you are the object placed into Hogwarts, as you move about you feel like you are now in Hogwarts roaming around.  This is often referred to as immersive.
+VR places an object into a virtual world.  That virtual world can be a re-creation of a known place or a completely imagined world like the imaginary school of wizardry, Hogwarts.  An object can then be placed into this virtual reality to create an immersive experience.  For example, inserting an image of a person into the virtual world of Hogwarts and simulating the person moving around.   This is often referred to as immersive as it simulates an object moving about a scene as if they were really in that environment.
 
 
 ## WebGL
@@ -24,7 +24,7 @@ WebGL allows for development of movement and control of the movement.  The movem
 ### What is a Shader?
 A simple explanation of a shader is that it is a program that tells the computer how to render pixels to create a shading effect.  You need 2 shaders for 2D models and 3 for 3D.  This is required for development for any type of AR/VR experience.  WebGL uses JavaScript libraries for 2D and 3D graphics.   It simplifies the development of 2D and 3D models without needing to know how to develop the shaders that create the 2D and 3D effects.   
 
-There is support for "texture" as well.  This manages the imagery within an environment.   Texture is used to add the look and feel of a person, animal, landscape, building or any other thing, that helps create a scene.
+There is support for "texture" as well.  This manages the imagery within an environment.   Texture is used to add the look and feel of a person, animal, landscape, building or any other thing, that helps create a scene.  The use of texture and depth together are used to create objects and the scenes in 2D or 3D.
 
 After these multi-dimensional objects are created, movement and control is added to create movement throughout a scene and a way for a user to control the movement.  
 
@@ -36,7 +36,7 @@ Once objects are created, positioning and controlling movement of the objects wi
 For movement control, many early releases of web-based AR and VR allowed for programming keyboard arrow keys to control movement.  Now, HTML5 supports external controllers with the [Gamepad](https://www.w3.org/TR/gamepad/) API.   This API uses HTML tags `<canvas>, <audio>, and <video>` to define the scene location on an HTML page and JavaScript and the Gamepad API enable movement via an external controller.   Mozilla Developer Network, heretofore known as MDN, provides a sample of the JavaScript to connect and disconnect a controller using the Gamepad API.  Below is the JavaScript template from [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API) for a basic connect and disconnect of a controller. 
 
 
-Below is the sample JavaScript to connect a controller:
+JavaScript to connect a controller:
 
     window.addEventListener("gamepadconnected", function(e) {
     console.log("Gamepad connected at index %d: %s. %d buttons, %d axes.",
@@ -46,7 +46,7 @@ Below is the sample JavaScript to connect a controller:
     });
    
 
-The sample code to disconnect a controller is:  
+JavaScript to disconnect a controller:  
 ```
 window.addEventListener("gamepaddisconnected",
 function(e) {
@@ -55,20 +55,21 @@ function(e) {
 });
 ```
 
-MDN also has information on how to manage multiple controllers and browser support as well.  For more information, see the [MDN Gamepad Specification](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API).
+MDN also has information on how to manage multiple controllers and browser support as well.  For more information, see the [MDN Gamepad Specification](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API).  When developing, you'll need to test.  MDN lists compatible controllers. 
 
-My "fun find" is the [Gamepad Tester](https://html5gamepad.com/) which allows you to test your code with a controller.
+A "fun find" for developing and testing controllers is the [HTML5 Gamepad Tester](https://html5gamepad.com/).  This is not a site managed by MDN and all controllers may not be supported.
 
-Let's take a look at positioning.  The controller may direct the movement of the object, but the object will not go anywhere without programmatically managing the movement of the object.
+Next, I will take a look at positioning.  The controller may direct the movement of the object, but the object will not go anywhere without programmatically managing the movement of the object.
+
 
 ### Positioning
 WebGL libraries and APIs also take care of positioning which creates the appearance of an object moving about the simulated environment.  There is also support for "texture" which is an array of pixels that simulate the look of an object.  For example, the management of light and pixels to look like a car in a scene.  WebGL manages the imagery, textures, and objects within an environment with JavaScript libraries.  You can customize and create your own depending upon your level of knowledge of how to create and render 2D and 3D objects.
 
 #### Teleporting
-A simple way to describe teleporting, in regards to AR/VR, is moving the viewer around a scene or an object around a scene.  Developer software like Unity have robust support for teleporting allowing movement of through various scenes.   At the heart of teleporting in AR/VR is the ability to manage the viewer or object within a space or the physics of moving from one location to another.  MDN has a JavaScript API, [XRReferenceSpace()](https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpace), which allows for programming movement by using the objects position offset, or location of that object in a space.  A variety of supported interfaces allows for development of new offsets.  When the browser is launched, an object is located in a starting position or offset and, through the use of a controller to provide direction, that object relocates from one offset to another simulating movement.  The premise is the same with video, however, no controller is needed to view the recorded material.
+A simple way to describe teleporting is moving the viewer around a scene or an object around a scene.  Developer software like Unity have robust support for teleporting allowing movement of and through various scenes.   At the heart of teleporting is the ability to manage the viewer or object within a space.  This is often referred to as the physics of moving from one location to another.  MDN has a JavaScript API, [XRReferenceSpace()](https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpace), which allows for programming movement by using the objects position offset, or location of that object in a space.  This API supports a variety of interfaces that can be defined as new offsets.  When the browser is launched, an object is located in a starting position or offset and, through the use of a controller to provide direction, that object relocates from one offset to another offset simulating teleporting into another scene or locale.  The premise is the same with video, however, no controller is needed for recorded visuals.
 
 #### Spatial Tracking
-WebGL can also provide spatial tracking.  MDN has an extensive section on [spatial tracking](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/Spatial_tracking).  The libraries and APIs that allows for an immersive experience.  Spatial tracking can manage the users position to create the feeling that you are part of that environment.  This is done by setting your location and tracking your position and movements as well as the objects within that scene.  
+WebGL can also supports spatial tracking.  MDN has an extensive section on [spatial tracking](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/Spatial_tracking).  These  libraries and APIs allow for development of deeper immersive experiences.  Spatial tracking is used to manage the user's positions relative to the positions of objects within a virtual or augmented environment.  This is done by setting your location tracking your position and movements as well as the objects within that environment over time.
 
 ### Positioning Summary
 In summary, WebGL has extensive positioning support that allows for a variety of motion and motion management of objects and tracking of the users motion and positions within a scene to create an immersive experience.
@@ -79,16 +80,16 @@ My "fun find" on samples using WebGL can be found at [WebGL Samples](https://web
  
  
 ## ***WebXR***
-[WebXR](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API) is another W3C specification and MDN manages developer standards based upon the W3C specification.  WebXR allows for 3D rendering of virtual worlds and includes an API for headset device integration.  WebXR  is built on WebGL and supports a variety of headsets including cardboard, Google Daydream, and Oculus Rift.  
+[WebXR](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API) is another W3C specification and the developer standards are also managed by MDN.  WebXR allows for 3D rendering of virtual worlds and includes an API for device integration.  WebXR  is built on WebGL and supports a variety of headsets including cardboard, Google Daydream, and Oculus Rift.  
 
-In some cases, an extension may be required.  In most cases, if you have a headset and an AR/VR/XR compatible phone, the browser option will become available from the home view.  You can then navigate to your web AR/VR experience and *experience it*.
+In some cases, a browser extension may be required.  In most cases, if you have a headset and an AR/VR/XR compatible phone, the browser option will become available from the home view.  You can then navigate to the appropriate URL for a web AR/VR experience and *experience it*.
 
-[Google Chrome](https://chrome.google.com/webstore/detail/webxr-api-emulator/mjddjgeghkdijejnciaefnkjmkafnnje/related) and [Mozilla Firefox](https://addons.mozilla.org/en-US/firefox/addon/webxr-api-emulator/) have WebXR simulator extensions available allowing developers the ability to simulate the viewpoint for a variety of popular headset.
+[Google Chrome](https://chrome.google.com/webstore/detail/webxr-api-emulator/mjddjgeghkdijejnciaefnkjmkafnnje/related) and [Mozilla Firefox](https://addons.mozilla.org/en-US/firefox/addon/webxr-api-emulator/) have WebXR simulator extensions as well.  This enables developers to simulate the viewpoint of most popular headsets.
 
 ## A-Frame
 [A-Frame](https://aframe.io/docs/1.0.0/introduction/) is an AR/VR development framework that allows for development using HTML without installing anything.  A script tag is needed in the head of an HTML document.  A-Frame supports more than 3D scene rendering.  It uses an entity-component framework based on [three.js](https://threejs.org/) which is also built on the WebGL framework.  
 
-A-Frame does not always require JavaScript for motion like other frameworks.  Custom JavaScript can be written for more complicated motion and scenes or developing new A-Frame components.  However, to develop a simple web AR/VR experience you just need HTML.  Let's build a scene using A-Frame. 
+A-Frame does not always require JavaScript for motion like other frameworks.  Custom JavaScript can be written for more customized motion and scene development or developing new A-Frame components.  However, to develop a simple web AR/VR experience you just need HTML.  Here is sample code for an AR/VR scene using A-Frame. 
 
     <!DOCTYPE html>
     <html>
@@ -106,7 +107,9 @@ A-Frame does not always require JavaScript for motion like other frameworks.  Cu
 		</body>
 	</html>
     
-A-Frame supports most popular headsets including HTC Vive, Windows Mixed Reality, Google Daydream, cardboard goggles, Samsung Gear, and most Oculus brand headsets.  It is not bound to basic 360° content and supports spatial tracking.  A-Frame refers to spatial management as positional tracking,
+A-Frame supports most popular headsets including HTC Vive, Windows Mixed Reality, Google Daydream, cardboard, Samsung Gear, and most Oculus brand headsets.  
+
+A-Frame It is not bound to basic 360° content and also supports spatial tracking or positional tracking,
 
 ### Positioning
 Because A-Frame does not require JavaScript, it is important to understand the concept of primitives.  A-Frame embraces the [three.js entity-component system](https://en.wikipedia.org/wiki/Entity_component_system) and uses [primitives](https://aframe.io/docs/1.0.0/introduction/html-and-primitives.html) to describe the elements of a scene like `<a-box>` or `<a-sky>`.  Within those tags are attributes that support the position of objects within those primitives.   Here is another A-Frame sample using several primitives with the A-Frame *position* attribute to control an object on a page.
