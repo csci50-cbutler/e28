@@ -4,7 +4,7 @@
 
         <em>
             Disclaimer: This functionality is for demonstration purposes only.
-            In a real-world application, this functionality must be locked down to administrators only.
+            In a real-world application, this functionality must be locked down to administrators only, and seeding is not typically done via a client-side interface.
         </em>
 
         <button @click='clearApi'>Clear API</button>
@@ -20,7 +20,6 @@ import * as app from '@/common/app.js';
 // Used for seeding firestore
 import { products } from '@/seeds/products.js';
 export default {
-    name: '',
     data: function() {
         return {
             message: '',

@@ -6,29 +6,23 @@
 </template>
 
 <script>
-import ShowProduct from "@/components/ShowProduct.vue";
-import * as app from '@/common/app.js'
-
+import ShowProduct from '@/components/ShowProduct.vue';
+//import * as app from '@/common/app.js';
 export default {
-    name: '',
     components: {
-        "show-product": ShowProduct,
+        'show-product': ShowProduct
     },
-    props: ['product'],
-    
     data: function() {
-        return {
-            products: []
-        };
+        return {};
     },
-    mounted: function() {
-         app.api.all('products')
-            .then(response => {
-                this.products = response;
-            })
+    computed: {
+        products: function() {
+            return this.$store.state.products;
+        }
     }
 };
 </script>
 
-<style scoped>
+<style lang='scss' scoped>
+@import '@/assets/scss/variables.scss';
 </style>

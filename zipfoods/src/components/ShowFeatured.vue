@@ -1,30 +1,40 @@
 <template>
-    <div id="featured">
+    <div id='featured'>
         <h2>Featured Products</h2>
-        <ul class="cleanList">
-            <li v-for="product in featuredProducts" :key="product.id">
-                {{ product.name }}
-            </li>
+        <ul class='cleanList'>
+            <li
+                data-test='featured-product'
+                v-for='product in featuredProducts'
+                :key='product.id'
+            >{{ product.name }}</li>
         </ul>
     </div>
 </template>
 <script>
-import { products } from "@/seeds/products.js";
-
+//import * as app from '@/common/app.js';
 export default {
-    name: "",
-    props: ["category"],
+    props: ['category'],
     data: function() {
-        return {
-            products: products
-        };
+        return {};
     },
     computed: {
         featuredProducts: function() {
-            function isMatch(product) {
-                return product.categories.includes(this);
-            }
-            return this.products.filter(isMatch, this.category);
+            let featuredProducts = [];
+            // Iterate through all our products
+            Object.keys(this.products).map(key => {
+                // If this product includes the category we're filtering for...
+                if (
+                    this.products[key].categories &&
+                    this.products[key].categories.includes(this.category)
+                ) {
+                    // Add it to our featuredProducts array
+                    featuredProducts.push(this.products[key]);
+                }
+            });
+            return featuredProducts;
+        },
+        products: function() {
+            return this.$store.state.products;
         }
     }
 };

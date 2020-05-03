@@ -2,40 +2,40 @@
     <div>
         <h2>Categories</h2>
         <ul class='cleanList'>
-            <li v-for='(category, id) in categories' :key='id'>{{ category }}</li>
+            <li
+                data-test='category-name'
+                v-for='(category, id) in categories'
+                :key='id'
+            >{{ category }}</li>
         </ul>
     </div>
 </template>
-
+     
 <script>
-const axios = require('axios');
-
+//import * as app from '@/common/app.js';
 export default {
-    name: "",
-    data: function(){
-        return{
-            products: []
-        };
+    data: function() {
+        return {};
     },
     computed: {
         categories: function() {
-            let categories = this.products.map(product => product.categories);
-            let mergedCategories = [].concat.apply([], categories);
-
-            // Return unique, sorted categories
+            let allCategories = [];
+            // Iterate through all our products
+            Object.keys(this.products).map(key => {
+                // Build array of categories
+                allCategories.push(this.products[key].categories);
+            });
+            // Merge together the array of categories
+            let mergedCategories = [].concat.apply([], allCategories);
+            // Get just the unique categories, sorted
             return [...new Set(mergedCategories)].sort();
+        },
+        products: function() {
+            return this.$store.state.products;
         }
-    },
-    mounted: function() {
-         axios
-          .get(
-              'https://my-json-server.typicode.com/susanBuck/e28-zipfoods-api/products'
-          )
-          .then(response => {
-              this.products = response.data;
-          });
     }
 };
 </script>
+
 <style scoped>
 </style>

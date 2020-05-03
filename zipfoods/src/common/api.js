@@ -3,9 +3,6 @@ import 'firebase/firestore';
 
 export default class Api {
 
-    /**
-     * 
-     */
     constructor(options) {
         firebase.initializeApp({
             apiKey: options.apiKey,

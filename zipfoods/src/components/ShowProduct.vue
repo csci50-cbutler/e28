@@ -1,32 +1,74 @@
 <template>
-    <router-link :to="{name: 'product', params: {id: product.id}}">
-    <div class='product'>
-        <div class='product-name'>{{ product.name }}</div>
-        <img class='product-thumb' :src='imageSrc' />
-        <div class='product-price'>${{ product.price }}</div><br>
-    </div>
+    <router-link
+        data-test='product-link'
+        class='product'
+        :to='{ name: "product", params: {slug: product.slug }}'
+    >
+        <div data-test='product-name' class='product-name'>{{ product.name }}</div>
+        <img :data-test='dataTestIdentifier' class='product-thumb' :src='imageSrc' />
+        <div class='product-price'>${{ product.price }}</div>
     </router-link>
 </template>
 
 <script>
-    export default {
-        name: "",
-        props: ['product'],
-        data: function() {
-            return {}
+export default {
+    props: ['product'],
+    data: function() {
+        return {};
+    },
+    computed: {
+        dataTestIdentifier: function() {
+            return 'product-image-' + this.product.slug;
         },
-        computed: {
-            imageSrc: function() {
-                try {
-                    return require('@/assets/images/products/' + this.product.slug + '.jpg')
-                }
-                catch (e) {
-                    return require('@/assets/images/products/zipfoods-logo.png')
-                }
+        imageSrc: function() {
+            try {
+                return require('@/assets/images/products/' +
+                    this.product.slug +
+                    '.jpg');
+            } catch (e) {
+                return require('@/assets/images/products/image-not-available.jpg');
             }
         }
     }
+};
 </script>
 
-<style scoped>
+<style scoped lang='scss'>
+@import '@/assets/scss/variables.scss';
+a.product:hover {
+    background-color: lighten($aqua, 10%);
+}
+a.product:link,
+a.product:visited,
+a.product:active,
+a.product:hover {
+    text-decoration: none;
+    color: black;
+    display: block;
+    width: 75%;
+    margin: auto;
+    margin-bottom: 20px;
+    border: 1px solid $silver;
+    padding: 20px;
+    .product-name {
+        font-weight: bold;
+        font-size: 2rem;
+        margin: 5px 0 10px 0;
+    }
+    .product-thumb {
+        width: 200px;
+        border: 1px solid $black;
+    }
+    .product-description {
+        width: 75%;
+        margin: auto;
+        text-align: left;
+        font-style: italic;
+    }
+    .product-price {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: bold;
+        font-size: 2rem;
+    }
+}
 </style>
