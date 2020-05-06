@@ -3,9 +3,6 @@ import Vue from 'vue';
 import Vuelidate from 'vuelidate';
 Vue.use(Vuelidate);
 
-export { default as queues }
-from '@/common/qCount.js';
-
 
 export const config = {
     firebase: {

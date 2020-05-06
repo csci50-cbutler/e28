@@ -206,7 +206,7 @@
         color: darkslategray;
   }
   h2{
-      color: midnightblue;
+      color: darkgreen;
       font-weight: bold;
       margin-left: 1%;
   }
