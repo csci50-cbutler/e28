@@ -10,7 +10,6 @@ import UnderConstruction from '@/components/UnderConstruction.vue';
 //State management
 import store from '@/common/store.js'
 
-
 Vue.use(VueRouter);
 Vue.config.productionTip = false;
 
