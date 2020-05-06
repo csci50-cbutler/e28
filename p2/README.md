@@ -1,7 +1,7 @@
 # Project 2:  Single Page Application with Vue-router and Single File Components
 # By: Cecilia Butler
 
-## Production URL: http://e28p2.prodtechub.me
+## Production URL: http://e28p2.prodtechhub.me
 
 ## Pages Summary
 
