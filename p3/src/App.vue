@@ -33,6 +33,8 @@
 </template>
 
 <script>
+//import * as app from  '@/common/app.js';
+
 export default {
     name: "App",
     props: {
@@ -49,7 +51,6 @@ export default {
         };
     },
     components: {},
-    mounted:  function(){}
 }
 </script>
 
@@ -76,7 +77,7 @@ export default {
     }
      .jumbotron {
         margin-bottom: 0;
-        background-color: #C5B870;
+        background-color: rgb(206, 198, 152);
         text-align: center;
     }
     .col-sm-8 {
@@ -85,14 +86,11 @@ export default {
     }
     .router-link-active:link {
         background-color: oldlace;
-        color: #C5B870;
+        color: rgb(206, 198, 152);
         font-weight: bold;
     }
-    .currpage, .exact-currpage{
-        color: fuchsia;
-    }
     .active {
-        background-color: #C5B870;
+        background-color: rgb(206, 198, 152);
         color: oldlace;
         font-weight: bold;
     }

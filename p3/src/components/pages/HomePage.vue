@@ -22,7 +22,7 @@
             stellar support team. Take a minute to see what's happening.<br><br>
           </p>
             
-          <h2>CC's Stories</h2>
+          <h2>Contact Center News</h2>
           <ul>
             <li>Canada & Mexico Get a Makeover. Links on the left</li>
             <li>Customer Calls Are Down, Making Way for Business Customers Elite Service Program</li>

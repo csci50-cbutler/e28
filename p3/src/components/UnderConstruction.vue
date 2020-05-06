@@ -54,7 +54,7 @@ export default {
         }
     .footer p {
         background-color: #1D024F;
-        color: #C5B870;
+        color: rgb(206, 198, 152);
         text-align: center;
         padding: 6px 0px 6px 0px;
         bottom: 0;
