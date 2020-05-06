@@ -52,7 +52,7 @@
             <div class="w3-quarter">
                 <div class="w3-container w3-cyan w3-padding-16">
                      <div class="w3-left"><i class="fa fa-barcode w3-xxxlarge"></i></div>
-                    <div class="w3-right"><h3>{{ randomNum   * 8}}</h3></div>
+                    <div class="w3-right"><h3>{{  prodReqCount }}</h3></div>
                     <div class="w3-clear"></div>
                     <h4>Product Requests</h4>
                 </div>
@@ -81,30 +81,58 @@
     </div>
 </template>
 <script>
-export default {
-    data:function(){
-        return{  
-         // Card Dashboard data values:
-            twitterCount: null,
-            randomNum: Math.floor(Math.random() * 100) + 15,
-        }
-    },
-    mounted: function() {
+    //import * as app from  '@/common/app.js';
+
+    export default {
+        data:function(){
+            return{  
+            // Card Dashboard data values:
+                twitterCount: null,
+                prodReqCount: null,
+                randomNum: Math.floor(Math.random() * 100) + 15,
+            }
+        },
+        mounted: function() {
+            // Setting count and storing in local storage 
             localStorage.setItem('twitterQ', this.randomNum);
             this.twitterCount = localStorage.getItem('twitterQ');
             console.log(localStorage.getItem('twitterQ'));
+
+            localStorage.setItem('prodReqQ', this.randomNum - 6 + 8);
+            this.prodReqCount =  localStorage.getItem('prodReqQ');
+            console.log(localStorage.getItem('prodReqQ'));
+
+            //Using Vuex
+           // this.billReqCount = new app.queues();
     },
-    computed: {
-            tferCount: function(){
-               return Math.floor(Math.random() * 200) + 20;
-            },
-            chatCount: function(){
-                return Math.floor(Math.random() * 100) + 15;
-            },
+
+        computed: {
+                tferCount: function(){
+                return Math.floor(Math.random() * 200) + 20;
+                },
+                chatCount: function(){
+                    return Math.floor(Math.random() * 100) + 15;
+                },
+                
+                billReqCount: function() {
+                    return this.$store.state.billReqCount;
+                }
+            }       
     }
-            
-}
 </script>
 <style scoped>
-
+    .mod i {
+            background-color: white;
+            color: indigo;
+            border-radius: 50%;
+            border: 2px solid grey;
+            padding:10px;
+            margin-top: -45px;
+            margin-left: 20px;
+    }
+    .fa-dashboard {
+            color: orange;
+            font-size: 24px;
+            padding-right: 5px;
+    }
 </style>

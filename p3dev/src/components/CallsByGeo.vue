@@ -54,9 +54,9 @@
                             </tr>
                         </table><br>
                         <button class="w3-button w3-gray" @click='update()'>More Locations &nbsp;<i class="fa fa-arrow-right"></i></button><br>
-                    </div>  <!-- End  of regional and system stats -->
-                </div>      <!-- End row of map and geo stats -->
+                    </div>
             </div>
+        </div>
         <hr>
     </div>
 </template>

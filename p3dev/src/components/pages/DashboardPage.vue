@@ -41,7 +41,7 @@
         <!-- Begin Main Section:  Dashboard tabs and other metrics-->
         <div id="main">
             <h1>CONTACT CENTER MANAGER DASHBOARD</h1>
-            <span style="font-size:30px;cursor:pointer; color:green" @click="openNav()">&#9776;</span>
+            <span style="font-size:30px;cursor:pointer; color:goldenrod" @click="openNav()">&#9776;</span>
             <header class="w3-container" style="padding-top:22px">
                 <h2>Contact Center Floor View</h2><br>
             </header>
@@ -82,11 +82,10 @@
 </template>
 
 <script>
-    // Import setions 
-    /*import Vue from 'vue';
+    // Import sections
+    /* import Vue from 'vue';
     import Vuelidate from 'vuelidate';
-    Vue.use(Vuelidate);
-*/
+    Vue.use(Vuelidate); */
 
     // imported section fort the dashboard
     import CallsByGeo from '@/components/CallsByGeo.vue';
@@ -96,8 +95,7 @@
     import ShiftDetails from '@/components/ShiftDetails.vue';
 
      //Backend Data Processing
-    import * as app from '@/common/app.js';
-    //import { required, minLength } from "vuelidate/lib/validators";
+    //import * as app from '@/common/app.js';
    
     export default {
          data:function(){
@@ -111,8 +109,6 @@
             'shift-details': ShiftDetails,
         },
 
-        computed: {},
-
         methods: {
             // Side navigation
             openNav: function() {
@@ -124,16 +120,18 @@
                 document.getElementById("main").style.marginLeft = "0";
             },
         },           //methods delimeter
+    }
 
     // Loads shift data when page  is accessed
-        mounted: function() {
+        /* mounted: function() {
             app.api.all('employee')
             .then(response => {
                 this.empInfo = response;
                 console.log(this.empInfo);
             });
         }
-    }               // Export default delimeter
+    }            */    // Export default delimeter
+
 </script>
 
 <style scoped>
@@ -144,7 +142,7 @@
     /* Nav styles */
     .img {
         border-radius: 50%;
-        border: 2px solid pink;
+        border: 2px solid darkred;
   }
     .sidenav {
         height: 100%;
@@ -205,93 +203,13 @@
   h1{
         text-align: center;
         font-weight: bold;
+        color: darkslategray;
   }
   h2{
       color: midnightblue;
       font-weight: bold;
       margin-left: 1%;
   }
-  .mod i {
-        background-color: white;
-        color: indigo;
-        border-radius: 50%;
-        border: 2px solid grey;
-        padding:10px;
-        margin-top: -45px;
-        margin-left: 20px;
-  }
-  .fa-dashboard {
-        color: orange;
-        font-size: 24px;
-        padding-right: 5px;
-  }
-  /* employee shift and monitoring styling  */
-    #shifts table{
-        border-collapse: collapse;
-        width: 95%;
-        margin-left: 3%;
-    }
-    #shifts td, #shifts th {
-        border: 2px solid darkorange;
-        padding: 8px;
-    }
-    #shifts tr:nth-child(even){
-        background-color: #f2f2f2;
-        }
-    #shifts tr:hover {
-        background-color: lightgray;
-        }
-    #shifts th {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-        background-color:  peachpuff;
-        color: white;
-    }
-
-    input[type=text], select{
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0 0 0;
-        display: inline-block;
-        background-color:  peachpuff;
-        border: 3px inset darkorange;
-        border-radius: 4px;
-        box-sizing: border-box;
-        height: 35px;
-    }
-    input[type=time]{
-        width: 30%;
-        height: 35px;
-        padding: 12px 12px;
-        margin: 8px 0;
-        display: inline-block;
-        background-color:  oldlace;
-        border: 3px inset darkorange;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-    input[type=submit] {
-        width: 100%;
-        background-color: oldlace;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-    input[type=submit]:hover {
-        background-color: darkorange;
-    }
-    button {
-        border: 5px inset  navy;
-        background-color:  oldlace;
-        color:  darkgray;
-        font-weight: bold;
-        height: 40px;
-        width:  100%;
-    }
     /* Footer styling and color */
     footer {
         background-color: #1D024F;

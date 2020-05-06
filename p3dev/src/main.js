@@ -7,6 +7,9 @@ import DashboardPage from '@/components/pages/DashboardPage.vue';
 import AdminPage from '@/components/pages/AdminPage.vue';
 import UnderConstruction from '@/components/UnderConstruction.vue';
 
+//State management
+import store from '@/common/store.js'
+
 
 Vue.use(VueRouter);
 Vue.config.productionTip = false;
@@ -25,6 +28,7 @@ const router = new VueRouter({
 })
 
 new Vue({
+    store: store,
     router: router,
     render: h => h(App)
 }).$mount("#app");
