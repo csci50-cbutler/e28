@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="panel panel-success">
-                        <div class="panel-heading">Contact Center Managment</div>
+                        <div class="panel-heading">Contact Center Management</div>
                         <div class="panel-body">
                             <img src="@/assets/images/CallCenterDashboard.jpg" class="img-responsive" alt="Contact Center Dashboard">
                         </div>
