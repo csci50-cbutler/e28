@@ -3,7 +3,7 @@
         <div class="w3-container">
             <p>First Time Contact</p>
             <div class="w3-grey">
-                <div class="w3-container w3-center w3-padding w3-green" style="width:25%">+25%</div>
+                <div class="w3-container w3-center w3-padding w3-green" style="width:25%">25%</div>
             </div><br>
             
             <p>Percent Satisfied</p>

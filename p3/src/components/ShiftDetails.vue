@@ -19,13 +19,17 @@
                         <input type="text" placeholder="Title" v-model="empInfo.title"/><br><br>
 
                         <label  for="workshift">Work Shift</label>&nbsp;
-                        <input list="shifts" name="workshift" placeholder="Work Shift"  v-model="empInfo.shift"/><br><br>
+                        <input list="shifts" name="workshift" placeholder="Work Shift"  v-model="$v.empInfo.shift.$model"/>
                         <datalist id="shifts">
                             <option value="Early"/>
                             <option value="Day"/>
                             <option value="Midday"/>
                         </datalist>
+                        <div v-if="$v.empInfo.shift.$error">
+                            <div class="formErr" v-if="!$v.empInfo.shift.required">Select original shift</div>
+                        </div>
 
+                        <br>
                         <label for="starttime"> Shift Start </label> &nbsp; &nbsp;
                         <input type="time" id="starttime" placeholder="Shift Start" v-model="empInfo.starttime"/>&nbsp; &nbsp; &nbsp; 
                         
@@ -100,10 +104,9 @@
                     required,
                     minLength: minLength(4)
                 },
-                //title: {},
-                /* shift: {
+                shift: {
                     required
-                }, */
+                },
                 supervisor: {
                     required
                 }
@@ -116,6 +119,7 @@
                 employees: [],
                 empInfo: {
                     name: "",
+                    shift: "",
                     supervisor: "",
                 },
             }           
@@ -214,7 +218,7 @@
     }
 
     input[type=time]{
-        width: 30%;
+        width: 30.5%;
         height: 35px;
         padding: 12px 12px;
         margin: 8px 0;

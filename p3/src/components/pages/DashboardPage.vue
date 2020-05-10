@@ -82,21 +82,13 @@
 </template>
 
 <script>
-    // Import sections
-    /* import Vue from 'vue';
-    import Vuelidate from 'vuelidate';
-    Vue.use(Vuelidate); */
-
-    // imported section fort the dashboard
+    // Iimported section fort the dashboard
     import CallsByGeo from '@/components/CallsByGeo.vue';
     import CallMetrics from   '@/components/CallMetrics.vue';
     import DashQueues from '@/components/DashQueues.vue';
     import GraphDash from  '@/components/GraphDash.vue';
     import ShiftDetails from '@/components/ShiftDetails.vue';
 
-     //Backend Data Processing
-    //import * as app from '@/common/app.js';
-   
     export default {
          data:function(){
              return{}
@@ -121,17 +113,6 @@
             },
         },           //methods delimeter
     }
-
-    // Loads shift data when page  is accessed
-        /* mounted: function() {
-            app.api.all('employee')
-            .then(response => {
-                this.empInfo = response;
-                console.log(this.empInfo);
-            });
-        }
-    }            */    // Export default delimeter
-
 </script>
 
 <style scoped>
@@ -186,7 +167,7 @@
         .sidenav {padding-top: 15px;}
         .sidenav a {font-size: 14px;}
   }
-  /* Logo on header */*
+  /* Logo on header */
   .logo {
         font-family:"Lobster";
         font-size: 42px;
@@ -206,7 +187,7 @@
         color: darkslategray;
   }
   h2{
-      color: darkgreen;
+      color: midnightblue;
       font-weight: bold;
       margin-left: 1%;
   }
