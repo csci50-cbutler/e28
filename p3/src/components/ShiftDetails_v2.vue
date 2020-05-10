@@ -62,6 +62,7 @@
                 <div class="w3-twothird"><br>
                     <!-- Call the employees API using Firebase and format the shifts .  -->
                     <div id="shifts" v-if="('employees' || 'added')">
+                    <!--<div id="shifts" v-if="('employee' || 'added')">-->
                         <table style="overflow-x:auto;">
                             <tr>
                                 <th>Employee Name</th>
@@ -147,8 +148,8 @@
                     // Show Added employee 
                     app.api.all('employee')
                         .then(response => {
-                            this.employees= response;
-                            console.log(this.employees);
+                            this.empInfo= response;
+                            console.log(this.empInfo);
                     });
                 }
             }

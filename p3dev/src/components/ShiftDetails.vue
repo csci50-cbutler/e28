@@ -8,26 +8,24 @@
                         <input type="text" placeholder="Id is auto-generated" v-model="empInfo.id"/><br><br>
 
                         <label for="fullname">Full Name </label>
-                        <!-- <input type="text" placeholder="Full Name" v-model="empInfo.name" /> <br><br> -->
-                        <input type="text" placeholder="Full Name" v-model="$v.empInfo.name.$model" :class='{"nameErr":  $v.empInfo.name.$error}'/> <br><br>
+                        <input type="text" placeholder="Full Name" v-model="$v.empInfo.name.$model" :class='{"nameErr":  $v.empInfo.name.$error}'/> 
                        
                        <div v-if="$v.empInfo.name.$error">
                             <div class="nameErr" v-if="!$v.empInfo.name.required">Your full name is required and must be at least 4 characters.</div>
                         </div>
 
+                        <br><br>
                         <label for="jobtitle">Job Title</label>
                         <input type="text" placeholder="Title" v-model="empInfo.title"/><br><br>
 
                         <label  for="workshift">Work Shift</label>&nbsp;
-                        <input list="shifts" name="workshift" placeholder="Work Shift"  v-model="$v.empInfo.shift.$model" :class='{"nameErr": $v.empInfo.shift.$error}'/><br><br>
+                        <input list="shifts" name="workshift" placeholder="Work Shift"  v-model="empInfo.shift"/><br><br>
                         <datalist id="shifts">
                             <option value="Early"/>
                             <option value="Day"/>
                             <option value="Midday"/>
-                            <option value="Afternoon"/>
-                            <option value="Evening"/>
                         </datalist>
-                        
+
                         <label for="starttime"> Shift Start </label> &nbsp; &nbsp;
                         <input type="time" id="starttime" placeholder="Shift Start" v-model="empInfo.starttime"/>&nbsp; &nbsp; &nbsp; 
                         
@@ -36,7 +34,7 @@
                         <br><br>
 
                         <label for="supervisor">Supervisor</label>&nbsp;
-                        <input list="supervisor" name="supervisor" placeholder="Select your supervisor from list below" v-model="$v.empInfo.supervisor"> <br><br>
+                        <input list="supervisor" name="supervisor" placeholder="Select your supervisor from list below" v-model="$v.empInfo.supervisor.$model" :class='{"nameErr":  $v.empInfo.supervisor.$error}'> 
                         <datalist id="supervisor">
                             <option value="Eileen Beedle"/>
                             <option value="Markus Jackson"/>
@@ -44,11 +42,14 @@
                             <option value="Stephanie Cho"/>
                             <option value="Guillermo Aquino"/>
                         </datalist>
-                        <br><br>
+                        
+                        <div v-if="$v.empInfo.supervisor.$error">
+                            <div class="nameErr" v-if="!$v.empInfo.supervisor.required">Please provide your supervisor.</div>
+                        </div>
                     </div>
                     
 
-                    <button class="subEmp" type="submit" @click="addEmp()">Add Employee to Shift</button>
+                    <br><br><button class="subEmp" type="submit" @click="addEmp()">Add Employee to Shift</button>
                     <div v-if="$v.$anyError">
                         <div class="formErr">Please fix errors before submitting form.</div>
                     </div>
@@ -72,7 +73,7 @@
                                 <th>Employee ID</th>
                             </tr>
                             
-                            <tr v-for="(e, index)  in empInfo" v-bind:key='e.id'>
+                            <tr v-for="(e, index)  in employees" v-bind:key='e.id'>
                                 <td> {{  e.name }}</td>
                                 <td> {{  e.title }}</td>
                                 <td> {{ e.shift }}</td>
@@ -99,12 +100,13 @@
                     required,
                     minLength: minLength(4)
                 },
-                shift: {
+                //title: {},
+                /* shift: {
+                    required
+                }, */
+                supervisor: {
                     required
                 }
-                /* supervisor: {
-                    required
-                } */
             }
         }, 
         data:function(){
@@ -112,7 +114,10 @@
                 //Employee shift updates
                 added: false,
                 employees: [],
-                empInfo: [],
+                empInfo: {
+                    name: "",
+                    supervisor: "",
+                },
             }           
         },  
         computed: {
@@ -127,21 +132,23 @@
                 this.$v.$touch();
 
                 if (this.$v.$anyError == false) {
-                    //this.$v.$reset();
 
                     app.api.add('employee', this.empInfo).then(id => {
                         this.$v.$reset();
                         console.log('Employee added was   ' + id);
                         this.added = true;
                         setTimeout(() => (this.added = false), 2000);
-                        //this.empInfo = [];
+                        /* this.empInfo = {
+                            name : "",
+                            supervisor: ""
+                        }; */
                     })
                     
                     // Show Added employee 
                     app.api.all('employee')
                         .then(response => {
-                            this.empInfo= response;
-                            console.log(this.empInfo);
+                            this.employees= response;
+                            console.log(this.employees);
                     });
                 }
             }
@@ -149,11 +156,10 @@
     
         // Loads shift data when page  is accessed
         mounted: function() {
-            //this.$v.$touch();
             app.api.all('employee')
                 .then(response => {
-                    this.empInfo = response;
-                    console.log(this.empInfo);
+                    this.employees= response;
+                    console.log(this.employees);
             });
         }
     }
@@ -208,7 +214,7 @@
     }
 
     input[type=time]{
-        width: 31%;
+        width: 30%;
         height: 35px;
         padding: 12px 12px;
         margin: 8px 0;

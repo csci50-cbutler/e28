@@ -1,8 +1,5 @@
 <template>
     <div>
-        <!-- Simulate updating records using this meta tag definition -->
-        <meta http-equiv="refresh" content="20" />
-
         <!-- Dashboard cards start using random generated data -->
         <div id="row1" class="w3-row-padding w3-margin-bottom mod ">
             <div class="w3-quarter">
@@ -15,7 +12,7 @@
             </div>
             
             <div class="w3-quarter">
-                <div class="w3-container w3-pink w3-padding-16 style='border: 3px solid white;'">
+                <div class="w3-container w3-pink w3-padding-16" style="border: 3px solid white;">
                     <div class="w3-left"><i class="fa fa-phone w3-xxxlarge"></i></div>
                     <div class="w3-right"><h3>{{ automatedReqCount }}</h3> </div>
                     <div class="w3-clear"></div>

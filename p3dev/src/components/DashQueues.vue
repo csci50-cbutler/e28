@@ -1,7 +1,7 @@
 <template>
     <div>
-        <!-- Simulate updating records using this meta tag definition -->
-        <meta http-equiv="refresh" content="10" />
+        <!-- Simulate updating records using this meta tag definition 
+        <meta http-equiv="refresh" content="10" />-->
 
         <!-- Dashboard cards start using random generated data -->
         <div id="row1" class="w3-row-padding w3-margin-bottom mod ">
