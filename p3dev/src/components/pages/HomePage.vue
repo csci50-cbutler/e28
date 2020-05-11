@@ -17,14 +17,14 @@
         
         <div class="col-sm-8 text-left">
           <h2>Welcome</h2>
-          <p>Welcome to the North America contact center site. We have five contact centers that service North America 
+          <p data-test="home-content">Welcome to the North America contact center site. We have five contact centers that service North America 
             and global premium secondary support. We have spotlight stories highlighting some recent achievements by our 
             stellar support team. Take a minute to see what's happening.<br><br>
           </p>
             
           <h2>Contact Center News</h2>
-          <ul>
-            <li>Canada & Mexico Get a Makeover. Links on the left</li>
+          <ul data-test="cc-news">
+            <li data-test="home-news">Canada & Mexico Get a Makeover. Links on the left</li>
             <li>Customer Calls Are Down, Making Way for Business Customers Elite Service Program</li>
           </ul>
         </div>
@@ -33,7 +33,7 @@
           <h4>Featured Reps</h4>
           <div class="well">
             <p>
-              <span>Candace Cleveland</span>
+              <span data-test="featured-reps">Candace Cleveland</span>
               <img src="@/assets/images/csr3.jpg" alt="CSR Candace Cleveland">
             </p>
           </div>

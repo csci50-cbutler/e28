@@ -1,7 +1,5 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-//import * as app from '@/common/app.js'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 Vue.use(Vuex)
 
@@ -18,8 +16,7 @@ export default new Vuex.Store({
 
     },
 
-    // Mutations & Actions section
-
+    // Mutations
     mutations: {
         updateChatReqCount(state, chatReqPayload) {
             state.chatReqCount = chatReqPayload;
@@ -45,6 +42,5 @@ export default new Vuex.Store({
         updatePriorityReqCount(state, priorityReqPayload) {
             state.priorityReqCount = priorityReqPayload;
         }
-    }
-
+    },
 })

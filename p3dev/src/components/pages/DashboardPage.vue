@@ -21,7 +21,7 @@
          <div class="w3-container">
             <h3>Dashboard</h3>
             <div class="w3-bar-block">
-                <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-large w3-dark-grey w3-hover-orange" @click="closeNav()" title="close menu">
+                <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-large w3-dark-grey w3-hover-orange"   data-test="close-sidenav" @click="closeNav()" title="close menu">
                     <i class="fa fa-remove fa-fw"></i>&nbsp;Close Menu</a>
                 <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-tachometer fa-fw"></i>&nbsp;Dashboards</a>
                 <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>&nbsp;Knowledge Base</a>
@@ -41,7 +41,7 @@
         <!-- Begin Main Section:  Dashboard tabs and other metrics-->
         <div id="main">
             <h1>CONTACT CENTER MANAGER DASHBOARD</h1>
-            <span style="font-size:30px;cursor:pointer; color:goldenrod" @click="openNav()">&#9776;</span>
+            <span data-test="open-sidenav" style="font-size:30px;cursor:pointer; color:goldenrod" @click="openNav()">&#9776;</span>
             <header class="w3-container" style="padding-top:22px">
                 <h2>Contact Center Floor View</h2><br>
             </header>

@@ -4,10 +4,10 @@
             <div class="topleft">
                 <h1>THE NEW FUTURE OF SETTINGS FOR YOUR CONTACT CENTER APPLICATION</h1>
             </div>
-            <div class="middle">
+            <div id="countdown" class="middle">
                 <h2>Reveal Day is May 31, 2021</h2>
                 <hr>
-                <Countdown deadline="May 31, 2021"></Countdown>
+                <Countdown data-test="countdown-timer" deadline="May 31, 2021"></Countdown>
                  <p>Come back soon to check on our progress...</p>
             </div>
         </div>

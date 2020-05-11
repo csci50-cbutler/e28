@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="panel panel-success">
-                        <div class="panel-heading">Contact Center Managment</div>
+                        <div class="panel-heading">Contact Center Management</div>
                         <div class="panel-body">
                             <img src="@/assets/images/CallCenterDashboard.jpg" class="img-responsive" alt="Contact Center Dashboard">
                         </div>
@@ -21,7 +21,7 @@
                                 <img  src="@/assets/images/wfm1.gif" class="img-responsive" alt="WFM">
                             </div>
                             <div class="panel-footer">
-                                    <a href=#>Rep Management, Scheduling, Reports </a>
+                                <a data-test="wfm-link" href=#>Rep Management, Scheduling, Reports </a>
                             </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="panel panel-primary">
-                        <div class="panel-heading">Reports & Analyics</div>
+                        <div class="panel-heading">Reports & Analytics</div>
                         <div class="panel-body">
                             <img src="@/assets/images/reports.png" class="img-responsive" alt="Reports & Analytics">
                         </div>
@@ -60,7 +60,7 @@
                             <img src="@/assets/images/knowledgebase.png" class="img-responsive" alt="Knowledge Base">
                         </div>
                         <div class="panel-footer">
-                            <a>Knowledge Base & Business Rules </a>
+                            <a data-test="knowledge-link" href=#>Knowledge Base & Business Rules </a>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
         </div><br><br>
         
         <footer class="container-fluid text-center">
-            <span class="footer">Manager/Agent Interaction:  &nbsp;&nbsp;
+            <span class="footer">Manager/Agent Interaction:  &nbsp;&nbsp;&nbsp;
                 <a href=# class="fa fa-headphones" title="Listen In" >  &nbsp;&nbsp;&nbsp;</a>
                 <a href=# class="fa fa-microphone-slash" title="Speak with Agent">  &nbsp;&nbsp;&nbsp;</a>
                 <a href=# class="fa fa-dot-circle-o" title="Record Live Agent" >  &nbsp;&nbsp;&nbsp;</a>

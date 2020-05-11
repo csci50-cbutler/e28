@@ -15,7 +15,7 @@
 
                 <div class="w3-twothird" style="margin-left: 50px; width: 900px; border-color: grey; overflow-x:auto;">
                     <h4> North American Call Volumes</h4>
-                    <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-flat-pumpkin ">
+                    <table data-test="location-stats" class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-flat-pumpkin ">
                         <tr>
                             <td>New York City</td>
                             <td>35%</td>

@@ -3,14 +3,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                <div class="panel panel-success">
-                    <div class="panel-heading">Contact Center Managment</div>
-                    <div class="panel-body"><img src="@/assets/images/CallCenterDashboard.jpg" class="img-responsive" alt="Contact Center Dashboard"></div>
-                    <div class="panel-footer">      
-                    <router-link class="rtebtn" tag="button"  id="button" :to="{name:  'Workforce Management'}">
-                    <a href=#> Contact Center Applications Dashboard</a>
-                    </router-link>
-                    </div>
+                    <div class="panel panel-success">
+                        <div class="panel-heading">Contact Center Managment</div>
+                        <div class="panel-body">
+                            <img src="@/assets/images/CallCenterDashboard.jpg" class="img-responsive" alt="Contact Center Dashboard">
+                        </div>
+                        <div class="panel-footer">
+                            <a href=#> Contact Center Applications Dashboard</a>   
+                        </div>
                     </div>
                 </div>
 
@@ -21,19 +21,21 @@
                                 <img  src="@/assets/images/wfm1.gif" class="img-responsive" alt="WFM">
                             </div>
                             <div class="panel-footer">
-                                <router-link class="rtebtn" tag="button"  id="button" :to="{name:  'Workforce Management'}">
                                     <a href=#>Rep Management, Scheduling, Reports </a>
-                                </router-link>
                             </div>
                     </div>
                 </div>
 
                 <div class="col-sm-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Social Media </div>
-                    <div class="panel-body"><img src="@/assets/images/twitter2.png" class="img-responsive" alt="Twitter"></div>
-                    <div class="panel-footer">Social Media Contact Queues</div>
-                </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Social Media </div>
+                        <div class="panel-body">
+                            <img src="@/assets/images/twitter2.png" class="img-responsive" alt="Twitter">
+                        </div>
+                        <div class="panel-footer">
+                            <a href=#>Social Media Contact Queues</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div><br>
@@ -41,25 +43,37 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Reports & Analyics</div>
-                    <div class="panel-body"><img src="@/assets/images/reports.png" class="img-responsive" alt="Reports & Analytics"></div>
-                    <div class="panel-footer">Reports & Contact Center Metrics</div>
-                </div>
-                </div>
-                <div class="col-sm-4">
-                <div class="panel panel-success">
-                    <div class="panel-heading">Knowledge Base</div>
-                    <div class="panel-body"><img src="@/assets/images/knowledgebase.png" class="img-responsive" alt="Knowledge Base"></div>
-                    <div class="panel-footer">Knowledge Base & Business Rules </div>
-                </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Reports & Analyics</div>
+                        <div class="panel-body">
+                            <img src="@/assets/images/reports.png" class="img-responsive" alt="Reports & Analytics">
+                        </div>
+                        <div class="panel-footer">
+                            <a href=#>Reports & Contact Center Metrics</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Technology Center</div>
-                    <div class="panel-body"><img src="@/assets/images/contactCenter.jpg"  class="img-responsive" alt="Call Center Application"></div>
-                    <div class="panel-footer">Manage Call Routes & Contact Flows</div>
+                    <div class="panel panel-success">
+                        <div class="panel-heading">Knowledge Base</div>
+                        <div class="panel-body">
+                            <img src="@/assets/images/knowledgebase.png" class="img-responsive" alt="Knowledge Base">
+                        </div>
+                        <div class="panel-footer">
+                            <a>Knowledge Base & Business Rules </a>
+                        </div>
+                    </div>
                 </div>
+                <div class="col-sm-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Technology Center</div>
+                        <div class="panel-body">
+                            <img src="@/assets/images/contactCenter.jpg"  class="img-responsive" alt="Call Center Application">
+                        </div>
+                        <div class="panel-footer">
+                            <a href=#>Manage Call Routes & Contact Flows</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div><br><br>

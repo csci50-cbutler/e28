@@ -5,7 +5,7 @@
                 <tr>
                     <td>
                         <div class="control-section">
-                            <ejs-circulargauge :title='title' style='display:block; width: 470px; height: 350px; border: 3px  solid navy;' align='center' id='gauge'>
+                            <ejs-circulargauge :title='title' style='display:block; width: 470px; height: 350px; border: 3px  solid navy;' align='center' id='gauge' data-test="gauge-graph">
                                 <e-axes>
                                     <e-axis :radius='gaugeRadius' :startAngle='startAngle' :endAngle='endAngle' :majorTicks='majorTicks' :lineStyle='lineStyle' :minorTicks='minorTicks' :labelStyle='labelStyle'>
                                         <e-pointers>
@@ -19,13 +19,19 @@
                     
                     <td>
                          <div id="avgCallTime" style="width: 470px; height: 350px; border: 3px  solid navy;">
-                             <pie-chart :donut="true"  title="Incomplete Calls" :data="[['System Disconnect', 44], ['Caller Terminated', 183], ['Transfer Drop', 208], ['Long Wait', 209], ['2+ Transfers', 328]]"></pie-chart>
-                            </div>
+                             <pie-chart :donut="true"  title="Incomplete Calls" :data="[
+                                ['System Disconnect', systemDisconnect], 
+                                ['Caller Terminated', Math.round(this.$store.state.agentReqCount + this.$store.state.tferReqCount/3) ], 
+                                ['Transfer Drop', Math.round(this.$store.state.tferReqCount/4)], 
+                                ['Long Wait',  Math.round(this.$store.state.agentReqCount/3)], 
+                                ['2+ Transfers', Math.round(this.$store.state.tferReqCount/5)]]">
+                             </pie-chart>
+                        </div>
                     </td>
 
                     <td> 
                         <div id="chart" style="width: 490px;">
-                            <bubble-chart style="height: 350px; border: 3px solid navy"></bubble-chart>
+                            <bubble-chart  data-test="bubble-graph" style="height: 350px; border: 3px solid navy" ></bubble-chart>
                         </div>
                     </td>
                  </tr>
@@ -48,8 +54,7 @@
     export default {
         data:function(){
             return{  
-
-            // Chart  series data start 
+            // Guage chart series data start 
                 title: "% Calls Completed",
                 titleStyle: {size: '16px', color: '#4B0082'},
                 gaugeRadius: '80%',
@@ -66,8 +71,11 @@
                 pointerRadius: '70%',
                 pointerWidth: 7,
                 cap: {radius: 8, border: { width: 0 }},
-                needleTail: {length: '25%'} , 
-                // Chart Description End
+                needleTail: {length: '25%'} ,
+
+                //Donut chart data
+                 systemDisconnect: Math.round(this.$store.state.automatedReqCount/3 + 25),
+                
             }
      },
      components: {

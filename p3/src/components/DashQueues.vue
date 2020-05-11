@@ -4,15 +4,17 @@
         <div id="row1" class="w3-row-padding w3-margin-bottom mod ">
             <div class="w3-quarter">
                 <div class="w3-container w3-green w3-padding-16 ">
-                     <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
-                    <div class="w3-right"><h3>{{ chatReqCount }}</h3></div>
+                    <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
+                    <div data-test="chat-count" class="w3-right">
+                        <h3>{{ chatReqCount }}</h3>
+                    </div>
                     <div class="w3-clear"></div>
                     <h4>Live Chat & Chatbot</h4>
                 </div>
             </div>
             
             <div class="w3-quarter">
-                <div class="w3-container w3-pink w3-padding-16" style="border: 3px solid white;">
+                <div class="w3-container w3-pink w3-padding-16 style='border: 3px solid white;'">
                     <div class="w3-left"><i class="fa fa-phone w3-xxxlarge"></i></div>
                     <div class="w3-right"><h3>{{ automatedReqCount }}</h3> </div>
                     <div class="w3-clear"></div>
@@ -23,7 +25,7 @@
             <div class="w3-quarter">
                 <div class="w3-container w3-teal w3-padding-16">
                      <div class="w3-left"><i class="fa fa-headphones w3-xxxlarge"></i></div>
-                    <div class="w3-right"><h3>{{ agentReqCount }}</h3></div>
+                    <div class="w3-right"><h3 data-test="agent-count">{{ agentReqCount }}</h3></div>
                      <div class="w3-clear"></div>
                     <h4>Agent Calls</h4>
                 </div>
@@ -70,7 +72,7 @@
             <div class="w3-quarter">
                  <div class="w3-container w3-purple w3-text-white w3-padding-16">
                     <div class="w3-left"><i class="fa fa-id-card-o w3-xxxlarge"></i></div>
-                    <div class="w3-right"><h3>{{ priorityReqCount }}</h3></div>
+                    <div class="w3-right"><h3 data-test="priority-count">{{ priorityReqCount }}</h3></div>
                     <div class="w3-clear"></div>
                     <h4>Priority/Manager Request</h4>
                  </div>
@@ -90,14 +92,14 @@
         },
         mounted: function() {
              // Setting count and storing in local storage             
-            localStorage.setItem('prodReqQ', this.randomNum - 6 * 3);
+            localStorage.setItem('prodReqQ', this.randomNum - 5 * 3);
             this.prodCount =  localStorage.getItem('prodReqQ');
             console.log("Dash cards prod count: ", localStorage.getItem('prodReqQ'));
             
             localStorage.setItem('priorityReqQ', this.randomNum + 23);
             this.priorityCount =  localStorage.getItem('priorityReqQ');
             
-            localStorage.setItem('tferReqQ', this.randomNum * 50);
+            localStorage.setItem('tferReqQ', this.randomNum * 30);
             this.tferCount =  localStorage.getItem('tferReqQ');
 
             //Using Vuex
@@ -136,8 +138,8 @@
             },
             priorityReqCount: function() {
                 return this.$store.state.priorityReqCount;
-            }
-        }       
+            },
+        } 
     }
 </script>
 <style scoped>

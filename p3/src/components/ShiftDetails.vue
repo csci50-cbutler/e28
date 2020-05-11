@@ -5,10 +5,10 @@
                 <div class="w3-third">
                     <div class="addEmp">
                         <label for="employeeID" id="empID">Employee ID </label>
-                        <input type="text" placeholder="Id is auto-generated" v-model="empInfo.id"/><br><br>
+                        <input data-test="emp-id" ttype="text" placeholder="Id is auto-generated" v-model="empInfo.id"/><br><br>
 
                         <label for="fullname">Full Name </label>
-                        <input type="text" placeholder="Full Name" v-model="$v.empInfo.name.$model" :class='{"nameErr":  $v.empInfo.name.$error}'/> 
+                        <input data-test="input-emp-name" type="text" placeholder="Full Name" v-model="$v.empInfo.name.$model" :class='{"nameErr":  $v.empInfo.name.$error}'/> 
                        
                        <div v-if="$v.empInfo.name.$error">
                             <div class="nameErr" v-if="!$v.empInfo.name.required">Your full name is required and must be at least 4 characters.</div>
@@ -16,14 +16,14 @@
 
                         <br><br>
                         <label for="jobtitle">Job Title</label>
-                        <input type="text" placeholder="Title" v-model="empInfo.title"/><br><br>
+                        <input data-test="input-emp-title" type="text" placeholder="Title" v-model="empInfo.title"/><br><br>
 
                         <label  for="workshift">Work Shift</label>&nbsp;
-                        <input list="shifts" name="workshift" placeholder="Work Shift"  v-model="$v.empInfo.shift.$model"/>
-                        <datalist id="shifts">
-                            <option value="Early"/>
-                            <option value="Day"/>
-                            <option value="Midday"/>
+                        <input data-test="input-emp-shift" list="shifts" name="workshift" placeholder="Work Shift"  v-model="$v.empInfo.shift.$model"/>
+                        <datalist data-test="shift-datalist" id="shifts">
+                            <option value="Early">Early</option>
+                            <option value="Day">Day</option>
+                            <option value="Midday">Midday</option>
                         </datalist>
                         <div v-if="$v.empInfo.shift.$error">
                             <div class="formErr" v-if="!$v.empInfo.shift.required">Select original shift</div>
@@ -31,15 +31,15 @@
 
                         <br>
                         <label for="starttime"> Shift Start </label> &nbsp; &nbsp;
-                        <input type="time" id="starttime" placeholder="Shift Start" v-model="empInfo.starttime"/>&nbsp; &nbsp; &nbsp; 
+                        <input data-test="input-emp-starttime" type="time" id="starttime" placeholder="Shift Start" v-model="empInfo.starttime"/>&nbsp; &nbsp; &nbsp; 
                         
                         <label for="endtime"> Shift End </label> &nbsp; &nbsp;
-                        <input type="time" id="endtime" placeholder="Shift End" v-model="empInfo.endtime"/>
+                        <input data-test="input-emp-endtime" type="time" id="endtime" placeholder="Shift End" v-model="empInfo.endtime"/>
                         <br><br>
 
                         <label for="supervisor">Supervisor</label>&nbsp;
-                        <input list="supervisor" name="supervisor" placeholder="Select your supervisor from list below" v-model="$v.empInfo.supervisor.$model" :class='{"nameErr":  $v.empInfo.supervisor.$error}'> 
-                        <datalist id="supervisor">
+                        <input data-test="input-emp-supervisor" list="supervisor" name="supervisor" placeholder="Select your supervisor from list below" v-model="$v.empInfo.supervisor.$model" :class='{"nameErr":  $v.empInfo.supervisor.$error}'> 
+                        <datalist data-test="supervisor-list" id="supervisor">
                             <option value="Eileen Beedle"/>
                             <option value="Markus Jackson"/>
                             <option value="Karen Johnson"/>
@@ -53,13 +53,14 @@
                     </div>
                     
 
-                    <br><br><button class="subEmp" type="submit" @click="addEmp()">Add Employee to Shift</button>
+                    <br><br>
+                    <button data-test="form-submit" class="subEmp" type="submit" @click="addEmp()">Add Employee to Shift</button>
                     <div v-if="$v.$anyError">
                         <div class="formErr">Please fix errors before submitting form.</div>
                     </div>
                     
                     <transition name='fade'>
-                        <div class='alert' v-if='added'> Employee has been added...</div>
+                        <div data-test="form-confirmation" class='alert' v-if='added'> Employee has been added...</div>
                     </transition>
                 </div>
                         
