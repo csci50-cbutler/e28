@@ -1,10 +1,9 @@
 # Project 3:  Contact Center Website Using Vuelidate, Vuex State Management & Testing Tools
 # By: Cecilia Butler
-
 ## Netlify Production URL: http://e28p3.prodtechub.me
 
 ## Outside resources
-This project coincides with a real world project.  My employer standardizes on several frameworks and technologies.  For my final project, project #3,  the following outside resources were used for this project.  
+This project coincides with a real world project.  My employer standardizes on several frameworks and technologies.  For my final project, project #3,  the following outside resources were used.  
 1. Webpage Design & Templates for dashboard design template.  In addition help with CSS styling and colors: 
 	- [Bootstrap](https://getbootstrap.com/)
 	- [w3Schools.com](https://www.w3schools.com/Css/css_rwd_templates.asp) 
@@ -40,7 +39,7 @@ For the course project assignment, the following resources are:
 
 **Note:**  The class for "vuejs-countdown" is provided by the NPM Countdown package.  A test was done on the class which is a child element of the countdown element.  
 
-**E2E Testing** with Cypress.  Tested all pages and most components at the header level or within the component.  For GraphDash.vue, the bubble chart (3rd chart) uses imports from Chartkick and Chartjs.  It will error out when manipulated required tags expecting specific attributes and values.  It is formatted within and HTML5 table.  The test checks if the the bubble chart data exists by checking table data location.
+**E2E Testing** with Cypress.  Tested all pages and components at the header level or within the component.  For GraphDash.vue, the bubble chart (3rd chart) uses imports from Chartkick and Chartjs.  It will error out when manipulated required tags expecting specific attributes and values.  It is formatted within and HTML5 table.  The test checks if the the bubble chart data exists by checking table data location.
 
     cy.get('td').eq(2)
 
