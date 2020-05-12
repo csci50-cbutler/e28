@@ -65,8 +65,8 @@
             <!-- Stats for sales, satisfaction and other KPIs with static data -->
             <h2>Contact, Customer & Connectivity KPIs</h2><br>
             <call-metrics></call-metrics>
-
-        </div>      <!-- End main section -->
+        </div>     
+         <!-- End main section -->
 
         <footer class="container-fluid text-center">
             <span class="footer">Manager/Agent Interaction:  &nbsp;&nbsp;

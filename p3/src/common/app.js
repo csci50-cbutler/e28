@@ -11,13 +11,6 @@ export const config = {
     }
 }
 
-/* export const config = {
-    firebase: {
-        apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
-        projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID
-    }
-} */
-
 export const api = new Api({
     apiKey: config.firebase.apiKey,
     projectId: config.firebase.projectId

@@ -17,9 +17,7 @@
         
         <div class="col-sm-8 text-left">
           <h2>Welcome</h2>
-          <p data-test="home-content">Welcome to the North America contact center site. We have five contact centers that service North America 
-            and global premium secondary support. We have spotlight stories highlighting some recent achievements by our 
-            stellar support team. Take a minute to see what's happening.<br><br>
+          <p data-test="home-content">Welcome to the North America contact center site. We have five contact centers that service North America and global premium secondary support. We have spotlight stories highlighting some recent achievements by our stellar support team. Take a minute to see what's happening.<br><br>
           </p>
             
           <h2>Contact Center News</h2>

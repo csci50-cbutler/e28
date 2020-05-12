@@ -5,7 +5,7 @@
                 <div class="w3-third">
                     <div class="addEmp">
                         <label for="employeeID" id="empID">Employee ID </label>
-                        <input data-test="emp-id" ttype="text" placeholder="Id is auto-generated" v-model="empInfo.id"/><br><br>
+                        <input data-test="emp-id" type="text" placeholder="Id is auto-generated" v-model="empInfo.id"/><br><br>
 
                         <label for="fullname">Full Name </label>
                         <input data-test="input-emp-name" type="text" placeholder="Full Name" v-model="$v.empInfo.name.$model" :class='{"nameErr":  $v.empInfo.name.$error}'/> 
@@ -18,16 +18,16 @@
                         <label for="jobtitle">Job Title</label>
                         <input data-test="input-emp-title" type="text" placeholder="Title" v-model="empInfo.title"/><br><br>
 
-                        <label  for="workshift">Work Shift</label>&nbsp;
-                        <input data-test="input-emp-shift" list="shifts" name="workshift" placeholder="Work Shift"  v-model="$v.empInfo.shift.$model"/>
-                        <datalist data-test="shift-datalist" id="shifts">
-                            <option value="Early">Early</option>
-                            <option value="Day">Day</option>
-                            <option value="Midday">Midday</option>
+                        <label for="workshift">Work Shift</label>
+                        <input data-test="input-emp-shift" list="shift" name="shift" placeholder="Work Shift"  v-model="$v.empInfo.shift.$model" :class='{"formErr":  $v.empInfo.shift.$error}'/> 
+                        <datalist data-test="shift-datalist" id="shift">
+                            <option value="Early"/>
+                            <option value="Day"/>
+                            <option value="Midday"/>
                         </datalist>
                         <div v-if="$v.empInfo.shift.$error">
                             <div class="formErr" v-if="!$v.empInfo.shift.required">Select original shift</div>
-                        </div>
+                        </div> 
 
                         <br>
                         <label for="starttime"> Shift Start </label> &nbsp; &nbsp;
@@ -38,7 +38,7 @@
                         <br><br>
 
                         <label for="supervisor">Supervisor</label>&nbsp;
-                        <input data-test="input-emp-supervisor" list="supervisor" name="supervisor" placeholder="Select your supervisor from list below" v-model="$v.empInfo.supervisor.$model" :class='{"nameErr":  $v.empInfo.supervisor.$error}'> 
+                        <input data-test="input-emp-supervisor" list="supervisor" name="supervisor" placeholder="Select your supervisor from list below" v-model="$v.empInfo.supervisor.$model" :class='{"nameErr":  $v.empInfo.supervisor.$error}'/> 
                         <datalist data-test="supervisor-list" id="supervisor">
                             <option value="Eileen Beedle"/>
                             <option value="Markus Jackson"/>
@@ -143,17 +143,17 @@
                         console.log('Employee added was   ' + id);
                         this.added = true;
                         setTimeout(() => (this.added = false), 2000);
-                        /* this.empInfo = {
+                        this.empInfo = {
                             name : "",
-                            supervisor: ""
-                        }; */
+                            shift: "",
+                            supervisor: "",
+                        };
                     })
                     
                     // Show Added employee 
                     app.api.all('employee')
                         .then(response => {
                             this.employees= response;
-                            console.log(this.employees);
                     });
                 }
             }

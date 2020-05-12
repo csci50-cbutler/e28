@@ -33,8 +33,6 @@
 </template>
 
 <script>
-//import * as app from  '@/common/app.js';
-
 export default {
     name: "App",
     props: {

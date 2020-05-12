@@ -113,38 +113,31 @@ export default {
         font-weight: bold;
         font-style: "Lobster";
     }
-
     .navbar {
       margin-bottom: 50px;
       border-radius: 0;
       background-color: #1D024F;
     }
-
-    /* Jumbotron*/
      .jumbotron {
         margin-bottom: 0;
         background-color: #C5B870;
     }
-
     img {
         margin-left: auto;
         margin-right: auto;
         width: 70%;
         height: 55%;
     }
-
     .panel {
         border-width: 2px;
         border-color: #C5B870;
     }
-
     .panel .panel-heading {
         background-color: #1D024F;
         color: #FAF9F6;
         border-width: 3px;
         border-color: #C5B870;
     }
-
     a:hover {
         color: whitesmoke;
         background-color: #1D024F;
@@ -156,29 +149,24 @@ export default {
         margin: auto;
         color: whitesmoke;
     }
-
     .rtebtn:hover  {
         background-color: #1D024F;
         border: 3px #C5B870;
         color: whitesmoke;
     }
-
     /* Footer styling and color */
     footer {
       background-color: #1D024F;
       padding: 25px;
     }
-
     footer i {
         color: #FAF9F6;
     }
-
     footer span {
         color: #FAF9F6;
         font-size:30px;
         padding-right: 3%;
     }
-
     .footer .fa {
         color: #FAF9F6;
         font-size:38px;
